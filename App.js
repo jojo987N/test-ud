@@ -1,15 +1,26 @@
-import { View, Text } from "react-native";
+import { View, SafeAreaView, StatusBar} from "react-native";
+import RootNavigation from "./navigation/navigation";
+import OrderDelivery from "./screens/OrderDelivery";
+import OrdersScreen from "./screens/OrdersScreen";
+import {} from "./firebase"
 
 export default function App() {
+
   return (
-    <View
-      style={{
+     
+      <SafeAreaView 
+        style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        }}>
+       
+      <RootNavigation />
+      {/* <OrdersScreen /> */}
+      {/* <OrderDelivery /> */}
+      
+       </SafeAreaView>
+      
+  
+     
   );
 }
