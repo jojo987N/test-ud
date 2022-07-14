@@ -1,26 +1,36 @@
 import { View, Text, SafeAreaView, StatusBar, Image, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 import { auth, getDriverInfos} from '../../firebase'
 import { signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { UserContext } from '../../context/UserContext'
 
 export default function SignIn({navigation}) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const {setUserData} = useContext(UserContext)
+
 
   const SignInUser = async ()=>{
 
     const re = await signInWithEmailAndPassword(auth, email, password)
     //.then((re)=>{
+       
       getDriverInfos().then(docs => {
 
-        navigation.navigate('OrdersScreen', {loc: {
-          latitude: docs[0].lat,
-          longitude: docs[0].lng,
-        }})
-        console.log("connected")
+        AsyncStorage.setItem('driverData', JSON.stringify({...docs[0], email: re.user.email}))
+
+          setUserData({...docs[0], email: re.user.email})
+
+          navigation.navigate('DrawerNavigator')
+        // navigation.navigate('DrawerNavigator', {screen: "OrdersScreen", params: {loc: {
+        //   latitude: docs[0].lat,
+        //   longitude: docs[0].lng,
+        // }}})
+        // console.log("connected")
          
       })
 
@@ -31,15 +41,41 @@ export default function SignIn({navigation}) {
     
 }
 
-// useEffect(()=>{
-//   const checkAuth = onAuthStateChanged(auth, (user)=>{
+useEffect(()=>{
+
+  AsyncStorage.getItem("driverData")
+  .then((value)=>{
+    if(value){
+
+     
+
+      let driverData = JSON.parse(value)
+
+      setUserData(driverData)
+
+      navigation.navigate('DrawerNavigator')
+    }
+  })
+   
+  // const checkAuth = onAuthStateChanged(auth, (user)=>{
       
-//       if(user){
-//         navigation.navigate('OrdersScreen')
-//       }
-//   })
-//   return checkAuth
-// })
+  //   if (user) {
+  //     AsyncStorage.getItem("driverData")
+  //       .then((value) => {
+             
+  //           let driverData = JSON.parse(value)
+
+  //           setUserData(driverData)
+
+  //           navigation.navigate('DrawerNavigator')
+        
+
+  //       })
+         
+  //     }
+  // })
+  // return checkAuth
+}, [])
 
   return (
     <SafeAreaView style={{

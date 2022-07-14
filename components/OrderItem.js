@@ -15,7 +15,8 @@ export default function OrderItem({order, location}) {
        })}>
 
         <Image 
-      source={{uri: order.Restaurant.image}} 
+      //source={{uri: order.Restaurant.image}} 
+      source={{uri: order.User.items[0].restaurant.image_url}} 
       style={styles.image}/>
 
       <View style={styles.user_restaurant_infos}>

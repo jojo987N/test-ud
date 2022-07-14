@@ -140,6 +140,15 @@ export default function OrderDelivery({route}) {
         })
       } 
 
+      const setters = async ()=> {
+
+        // setDestination({
+        //   latitude: order.Restaurant.lat,
+        //   longitude: order.Restaurant.lng,
+        // })
+
+      }
+
       const onButtonPressed = () => {
 
         if(orderStatus === APP_CONSTANT.ACCEPTED){
@@ -150,17 +159,24 @@ export default function OrderDelivery({route}) {
            cam.zoom += 1;
            mapRef?.current?.animateCamera(cam);
           })
-
-
-          setDestination({
+           setters()
+           .then(()=> setDestination({
             latitude: order.Restaurant.lat,
             longitude: order.Restaurant.lng,
-          })
+          }))
+           .then(()=> setWaypoints([]))
+           .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
+           .then (()=> setColorButton("orange"))
 
-          setWaypoints([])
+        //   setDestination({
+        //     latitude: order.Restaurant.lat,
+        //     longitude: order.Restaurant.lng,
+        //   })
 
-        setTextButton(APP_CONSTANT.PICK_UP)
-        setColorButton("orange")
+        //   setWaypoints([])
+
+        // setTextButton(APP_CONSTANT.PICK_UP)
+        // setColorButton("orange")
          
         updateOrder(order.id, APP_CONSTANT.START_DELIVERY)
          
@@ -170,13 +186,23 @@ export default function OrderDelivery({route}) {
           
             bottomSheet?.current.collapse()
 
-            setDestination({
+            setters()
+            .then(()=>  setDestination({
               latitude: order.User.lat,
               longitude: order.User.lng
-            })
-            setTextButton(APP_CONSTANT.FINISH)
-            setColorButton("#996300")
-           setIsDriverClose(false)
+            }))
+            .then(()=> setTextButton(APP_CONSTANT.FINISH))
+            .then(()=>  setColorButton("#996300"))
+            .then (()=> setIsDriverClose(false))
+
+          //   setDestination({
+          //     latitude: order.User.lat,
+          //     longitude: order.User.lng
+          //   })
+          //   setTextButton(APP_CONSTANT.FINISH)
+          //   setColorButton("#996300")
+          //  setIsDriverClose(false)
+
            updateOrder(order.id, APP_CONSTANT.PICKED_UP)
           
         }

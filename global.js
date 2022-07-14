@@ -17,3 +17,16 @@ export const APP_CONSTANT = {
     FINISH: "Finish",
     COMPLETED: "Completed"
 }
+
+export const colors = {
+    buttons: "black",
+    grey1: "#43484d",
+    grey2: "#5e6977",
+    grey3: "#86939e",
+    grey4: "#bdc6cf",
+    grey5: "#e1e8ee",
+    cardComment: "#86939e",
+    cardbackground: 'white',
+    statusbar: '#ff8c52',
+    headerText: 'white'
+}

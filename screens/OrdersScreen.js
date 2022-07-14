@@ -1,6 +1,6 @@
 import { View, Text, FlatList, useWindowDimensions, ActivityIndicator, 
   Switch, StyleSheet, TouchableOpacity, } from 'react-native'
-import React, { useRef, useState, useEffect} from 'react'
+import React, { useRef, useState, useEffect, useContext} from 'react'
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet'
 import OrderItem from '../components/OrderItem'
 import { orders } from '../global/data'
@@ -17,28 +17,42 @@ import LottieView from 'lottie-react-native'
 import { APP_CONSTANT } from '../global'
 import OnlineOffLine from '../components/ordersScreen/OnlineOffLine'
 import Orders from '../components/Orders'
+import Menu from '../components/Menu'
+import Dashboard from '../components/Dashboard'
+import History from './History'
+import { UserContext } from '../context/UserContext'
+import CalendarComponent from '../components/CalendarComponent'
+import Loading from '../components/Loading'
 
  
+ 
 
-export default function OrdersScreen({route}) {
+export default function OrdersScreen({route, navigation}) {
 
-  const {loc} = route.params
+  const {userData} = useContext(UserContext)
 
+   
+
+
+ // const {loc} = route.params
+
+  
  // console.log(loc)
 
   const bottomSheet = useRef(null)
   const { width, height } = useWindowDimensions()
   const [opacity, setOpacity]= useState(0.9)
   const [showOrderCountDown, setShowOrderCountDown] = useState(false)
-  const [bottomSheetHeight, setBottomSheetHeight] = useState("95%")
+  const [bottomSheetHeight, setBottomSheetHeight] = useState("90%")
   const [mapdirection, setMapdirection] = useState(false)
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [order, setOrder] = useState({})
   const [onOffline, setOnOffline] = useState("")
-  
 
-
-  const [location, setLocation] = useState(loc);
+  const [location, setLocation] = useState({
+    latitude: userData.lat,
+    longitude: userData.lng
+  });
   const [destination, setDestination] = useState(
     {
     latitude: 37.70,
@@ -49,7 +63,8 @@ export default function OrdersScreen({route}) {
 
    const getAvailability = ()=>{
 
-    const q= query(driversCol, where('Id', '==', auth.currentUser?.uid))
+    //const q= query(driversCol, where('Id', '==', auth.currentUser?.uid))
+    const q= query(driversCol, where('Id', '==', userData.Id))
 
     onSnapshot(q, (snapshot)=>{
     
@@ -101,23 +116,29 @@ export default function OrdersScreen({route}) {
 
   useEffect(() => {
 
-    // (async () => {
-    //   let { status } = await Location.requestForegroundPermissionsAsync();
+     
 
-    //   //console.log(status)
-    //   if (status !== 'granted') {
-    //     setErrorMsg('Permission to access location was denied');
-    //     return;
-    //   }
+    route.params.myLocation && (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
 
-    //   let location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
+      //console.log(status)
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
       
-    //   setLocation({
-    //     latitude: location.coords.latitude,
-    //     longitude: location.coords.longitude
-    //   });
+      setLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude
+      });
 
-    // })();
+      bottomSheet?.current.collapse()
+
+     // console.log(location)
+
+    })();
 
     getAvailability()
 
@@ -132,11 +153,14 @@ export default function OrdersScreen({route}) {
     
   //  <ActivityIndicator size="large"/>
 
+  console.log("qdffddfdfsfs")
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: "grey" , opacity:opacity}}>
         <MapView
-          initialRegion={{
+          //initialRegion
+          region={{
             // latitude: 37.78520111708754,
             // longitude: -122.43200834862841,
             latitude: location.latitude,
@@ -192,22 +216,39 @@ export default function OrdersScreen({route}) {
 
 
         </MapView>
+
+        <MenuButton navigation={navigation} />
         
         <Earnings />
          
         
        {onOffline === APP_CONSTANT.ONLINE?(<></>):(<GoButton/>)}
        
-        <BottomSheet  ref={bottomSheet} index={1} snapPoints={["12%", bottomSheetHeight]}>
+       <BottomSheet  ref={bottomSheet} index={1} snapPoints={["12%", bottomSheetHeight]}>
          
           <OnlineOffLine onOffline={onOffline}/>
            
-          <BottomSheetScrollView>
-            <Orders location={location}/>
-            <OffButton />
-          </BottomSheetScrollView>
+             {route.params.myLocation && <Loading />}
+            {route.params.dashboard && <Dashboard navigation={navigation} />}
+
+            {route.params.status && 
+             <BottomSheetScrollView>
+              
+               { route.params.status === "history" && <CalendarComponent /> }
+               <Orders location={location} route={route}/>
+             </BottomSheetScrollView>
+            }
+      
+          {route.params.dashboard && <OffButton /> }
 
         </BottomSheet>
+
+       
+
+         
+        
+
+
          
       </View>
        
@@ -334,6 +375,14 @@ const OffButton = ()=>(
      }}>OFF</Text>
   </TouchableOpacity>
 
-  
-   
 )
+
+export const MenuButton = ({navigation})=> {
+
+  return (
+
+    <View style={{position: "absolute", top: 25, left: 10}}>
+      <Menu navigation={navigation} />
+    </View>
+  )
+ } 
