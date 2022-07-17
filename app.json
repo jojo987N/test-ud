@@ -1,0 +1,20 @@
+ {
+   "expo": {
+    "name": "Your App Name 10",
+    "icon": "./assets/images/shopping-bag.png",
+    "version": "1.10.0",
+    "slug": "your-app-slug10",
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname10",
+      "buildNumber": "1.2.0"
+    },
+    "android": {
+      "permissions":[
+       "ACCESS_COARSE_LOCATION",
+       "ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.yourcompany.yourappname10",
+      "versionCode": 1
+    }
+   }
+ }
