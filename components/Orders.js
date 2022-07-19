@@ -3,34 +3,66 @@ import React, {useEffect, useState} from 'react'
 import { auth, getOrders, ordersCol } from '../firebase'
 import OrderItem from './OrderItem'
 import { APP_CONSTANT } from '../global'
-import { onSnapshot, query, where } from 'firebase/firestore'
+import {getDocs, onSnapshot, query, where } from 'firebase/firestore'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export default function Orders({location, route}) {
+export default function Orders({location, route, setLoading}) {
 
   const [orders, setOrders] = useState([])
+  
+
+   
 
   
   useEffect(()=>{
+    setLoading(true)
     //const q = query(ordersCol, where('driverId', '==', auth.currentUser?.uid ))
      
-    let q = ordersCol
-    if(route.params.status !== "history")
-     q = query(ordersCol, where('status', '==', route.params.status ))
-
-    onSnapshot(q, snapshot =>{
+    AsyncStorage.getItem("orders").then(value => {
+      if(value){
         
-        // setOrders(snapshot.docs.filter(doc =>Object.values(APP_CONSTANT).includes(doc.data().status)).map(doc =>({
-        //   id: doc.id,
-        //   ...doc.data()
-        // })))
+        let orders = JSON.parse(value)
+        if (route.params.status !== "history")
+        orders = orders.filter(order => order.status === route.params.status)
+        setOrders(orders)
+        setLoading(false)
+      }
+      else {
 
-        setOrders(snapshot.docs.map(doc =>({
+        // let q = ordersCol
+        // if (route.params.status !== "history")
+        //   q = query(ordersCol, where('status', '==', route.params.status))
+
+        // onSnapshot(q, snapshot =>{
+        getDocs(ordersCol).then(snapshot => {
+
+          AsyncStorage.setItem('orders', JSON.stringify(snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
-          })))
+          }))))
+          
+          let orders = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }))
+
+          if (route.params.status !== "history")
+          orders = orders.filter(order => order.status === route.params.status)
+
+          setOrders(orders)
+          setLoading(false)
+        })
+      }
     })
+
+
+
+     
    // getOrders().then((orders)=>setOrders(orders))
   }, [])
+
+   
+  
   return (
     <View>
        {orders.map((order, index)=> <OrderItem key={index} order={order} location = {location}  />)}
