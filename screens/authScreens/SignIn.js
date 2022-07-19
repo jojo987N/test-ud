@@ -5,17 +5,21 @@ import { auth, getDriverInfos} from '../../firebase'
 import { signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { UserContext } from '../../context/UserContext'
+import Loading from '../../components/Loading'
 
 export default function SignIn({navigation}) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const {setUserData} = useContext(UserContext)
 
 
   const SignInUser = async ()=>{
-
+    
+    setLoading(true)
+    try {
     const re = await signInWithEmailAndPassword(auth, email, password)
     //.then((re)=>{
        
@@ -24,7 +28,7 @@ export default function SignIn({navigation}) {
         AsyncStorage.setItem('driverData', JSON.stringify({...docs[0], email: re.user.email}))
 
           setUserData({...docs[0], email: re.user.email})
-
+          setLoading(false)
           navigation.navigate('DrawerNavigator')
         // navigation.navigate('DrawerNavigator', {screen: "OrdersScreen", params: {loc: {
         //   latitude: docs[0].lat,
@@ -34,12 +38,22 @@ export default function SignIn({navigation}) {
          
       })
 
+    }catch(e){
+      console.log(e)
+      setLoading(false)
+     
+  }
+
         
 
   //  })
 
     
 }
+
+// loading && setTimeout(()=>{
+//   setLoading(false)
+// }, 10000)
 
 useEffect(()=>{
 
@@ -76,6 +90,9 @@ useEffect(()=>{
   // })
   // return checkAuth
 }, [])
+
+if(loading)
+return <Loading />
 
   return (
     <SafeAreaView style={{

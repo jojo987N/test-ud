@@ -153,8 +153,6 @@ export default function OrdersScreen({route, navigation}) {
     
   //  <ActivityIndicator size="large"/>
 
-  console.log("qdffddfdfsfs")
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: "grey" , opacity:opacity}}>
