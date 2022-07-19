@@ -51,7 +51,7 @@ export default function DrawerContent(props) {
                     rounded
                     avatarStyle={styles.avatar}
                     size={75}
-                    source={{uri: "https://s3-media4.fl.yelpcdn.com/bphoto/ouK2VmW0SrI70jsJpTxJhw/o.jpg"}}/>
+                    source={{uri: "https://www.shareicon.net/data/128x128/2016/04/10/747353_people_512x512.png"}}/>
                 <View style={{marginLeft: 10}}>
                     <Text style={{
                         fontWeight: "bold",
@@ -60,7 +60,7 @@ export default function DrawerContent(props) {
 
                     <Text style={{
                         fontSize: 14,
-                    }}>paul@appfood.com</Text>
+                    }}>driver@goodfood.com</Text>
                 </View>
             </View>
              

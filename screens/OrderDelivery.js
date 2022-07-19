@@ -376,7 +376,9 @@ export default function OrderDelivery({route}) {
      <Divider size={10} color={grey1}/>
           
      {/* Button  */}
-    <TouchableOpacity style={styles.buttonContainer} onPress={()=>{onButtonPressed()}}>
+    <TouchableOpacity style={styles.buttonContainer} onPress={()=>{
+      onButtonPressed()
+      }}>
     <View style={{...styles.button, 
       backgroundColor: renderButtonColor()
       //colorButton,
