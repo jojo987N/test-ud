@@ -223,8 +223,6 @@ export default function OrderDelivery({route}) {
 
     useEffect(() => {
 
-      console.log(destination)
-
       getOrderStatus()
       // (async () => {
       //   let { status } = await Location.requestForegroundPermissionsAsync();
@@ -323,12 +321,8 @@ export default function OrderDelivery({route}) {
           }}
           showsUserLocation={true}
           followsUserLocation>
-
              
-          {/* {orders.map((order, index) => ( */}
-          
-
-          <MapViewDirections 
+          {/* <MapViewDirections 
           
           origin={{
             latitude: location.latitude,
@@ -354,7 +348,7 @@ export default function OrderDelivery({route}) {
               setTotalMinutes(result.duration)
               setTotalKm(result.distance)
             }}
-          />
+          /> */}
 
             <CustomMarker subject={order.Restaurant} renderButtonColor={renderButtonColor}/>
             
@@ -446,9 +440,11 @@ const Estimate = ({totalMinutes, totalKm, color})=> (
     alignItems: "center",
     marginBottom: 20
 }}>
-  <Text style={{fontSize: 25}}>{totalMinutes.toFixed()} min </Text>
+  {/* <Text style={{fontSize: 25}}>{totalMinutes.toFixed()} min </Text> */}
+  <Text style={{fontSize: 25}}>20 min </Text>
   <FontAwesome5 name="shopping-bag" size={30} color={color}/>
-  <Text style={{fontSize: 25}}> {totalKm.toFixed()} km </Text>
+  <Text style={{fontSize: 25}}> 4 km </Text>
+  {/* <Text style={{fontSize: 25}}> {totalKm.toFixed()} km </Text> */}
 </View>
 )
 
