@@ -28,6 +28,8 @@ export default function OrderDelivery({route}) {
 
  //console.log(auth.currentUser?.uid)
 
+  
+
 
   //const [location, setLocation] = useState(null);
   const [totalMinutes, setTotalMinutes] = useState(0)
@@ -221,6 +223,8 @@ export default function OrderDelivery({route}) {
 
     useEffect(() => {
 
+      console.log(destination)
+
       getOrderStatus()
       // (async () => {
       //   let { status } = await Location.requestForegroundPermissionsAsync();
@@ -376,7 +380,9 @@ export default function OrderDelivery({route}) {
      <Divider size={10} color={grey1}/>
           
      {/* Button  */}
-    <TouchableOpacity style={styles.buttonContainer} onPress={()=>{onButtonPressed()}}>
+    <TouchableOpacity style={styles.buttonContainer} onPress={()=>{
+      // onButtonPressed()  // iciii
+      }}>
     <View style={{...styles.button, 
       backgroundColor: renderButtonColor()
       //colorButton,
