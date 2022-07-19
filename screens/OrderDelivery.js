@@ -223,7 +223,7 @@ export default function OrderDelivery({route}) {
 
     useEffect(() => {
 
-      getOrderStatus()
+      // getOrderStatus()  //ICII
       // (async () => {
       //   let { status } = await Location.requestForegroundPermissionsAsync();
   

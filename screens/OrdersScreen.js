@@ -11,7 +11,7 @@ import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
 import { db, updateDriverOnOff, driversCol, auth, ordersCol} from '../firebase'
-import {collection, orderBy, query, limit, onSnapshot, where} from 'firebase/firestore'
+import {collection, orderBy, query, limit, onSnapshot, where, getDocs} from 'firebase/firestore'
 import { currency } from '../global'
 import LottieView from 'lottie-react-native'
 import { APP_CONSTANT } from '../global'
@@ -60,6 +60,8 @@ export default function OrdersScreen({route, navigation}) {
   }
   )
 
+  const [loading, setLoading] = useState(false)
+
 
    const getAvailability = ()=>{
 
@@ -86,8 +88,11 @@ export default function OrdersScreen({route, navigation}) {
 
       
 
-      onSnapshot(ordersCol, (snapshot)=>{
-           console.log("in")
+      // onSnapshot(ordersCol, (snapshot)=>{
+
+         
+        getDocs(ordersCol).then(snapshot =>{
+           
           snapshot.docs.forEach((doc) => {
         
             if(doc.data().createdAt && doc.data().status === APP_CONSTANT.COMFIRMED && onOffline === APP_CONSTANT.ONLINE) {
@@ -140,9 +145,9 @@ export default function OrdersScreen({route, navigation}) {
 
     })();
 
-    getAvailability()
+    // getAvailability() // icii
 
-    getOrders()
+    // getOrders()
 
   }, [])
 
@@ -227,13 +232,14 @@ export default function OrdersScreen({route, navigation}) {
           <OnlineOffLine onOffline={onOffline}/>
            
              {route.params.myLocation && <Loading />}
+             {loading && <Loading />}
             {route.params.dashboard && <Dashboard navigation={navigation} />}
 
             {route.params.status && 
              <BottomSheetScrollView>
               
                { route.params.status === "history" && <CalendarComponent /> }
-               <Orders location={location} route={route}/>
+               <Orders location={location} route={route} setLoading={setLoading}/>
              </BottomSheetScrollView>
             }
       
