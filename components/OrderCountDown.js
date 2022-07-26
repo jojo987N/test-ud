@@ -25,7 +25,14 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
      
     >
 
-      <View style={{
+      <TouchableOpacity
+      onPress={()=>{
+        setShowOrderCountDown(false)
+        setShowOrderCountDown(false)
+        setOpacity(1)
+        setBottomSheetHeight("95%")
+      }}
+       style={{
         flexDirection: "row",
         backgroundColor: "#4d4d4d",
         width: 150,
@@ -41,7 +48,7 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
         fontSize: 20
       }}>DECLINE</Text>
       
-      </View>
+      </TouchableOpacity>
 
       <View style={{
         backgroundColor: "#4d4d4d",
