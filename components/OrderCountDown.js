@@ -57,21 +57,22 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
        }}>
         {/* <Text>Delivery</Text> */}
        <TouchableOpacity onPress={()=>{
-        // console.log("ORDER", order)
-        updateOrder(order.id, APP_CONSTANT.ACCEPTED, auth.currentUser?.uid)
-       // .then(()=>{
-          navigation.navigate('OrderDelivery', {
-            order: order,
-            location: location
-          })
-        //})
+
+         setShowOrderCountDown(false)
+         setShowOrderCountDown(false)
+         setOpacity(1)
+         setBottomSheetHeight("95%")
+        
+        // updateOrder(order.id, APP_CONSTANT.ACCEPTED, auth.currentUser?.uid)
+        
+        //   navigation.navigate('OrderDelivery', {
+        //     order: order,
+        //     location: location
+        //   })
+        
           
        
-      //  setShowOrderCountDown(false)
-      //  setOpacity(1)
-      //  setBottomSheetHeight("95%")
-      //  setMapdirection(false)
-      //  setDescription("")
+       
 
        }}>
          <CountdownCircleTimer

@@ -149,6 +149,16 @@ export default function OrdersScreen({route, navigation}) {
 
     // getOrders()
 
+
+
+    setTimeout(() => {
+
+      setTotalMinutes(8)
+      setShowOrderCountDown(true)
+       
+      
+    }, 10000);
+
   }, [])
 
   // if(!location)
