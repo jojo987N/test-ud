@@ -131,6 +131,16 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
           } min</Text>
            
         </View>
+        <View>
+          <Text style={{
+            textAlign: "center",
+            fontSize: 35,
+            color: "white",
+            fontWeight: 'bold',
+            marginBottom: 2
+
+          }}>151 3rd St, San Francisco</Text>
+        </View>
       </View>
       
         
