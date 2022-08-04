@@ -63,13 +63,19 @@ export default function SettingsComponent({navigation, bs}) {
 
   return (
     <SafeAreaView style={{
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      backgroundColor: "#ecf9f2",
-      flex: 1
+      // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      // backgroundColor: "blue",
+      flex: 1,
+
     }}>
        <View style={{
          alignItems: "center",
-         marginTop: 20
+        //  marginTop: 20,
+          backgroundColor: "blue",
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        paddingBottom: 30,
+        paddingTop: 30
        }}>
         <Pressable onPress={
         ()=>{
@@ -88,12 +94,17 @@ export default function SettingsComponent({navigation, bs}) {
         </Pressable>
       
 
-       <Text style={{fontSize: 15, fontWeight: "bold", color: "#3d5c5c",
+       <Text style={{fontSize: 15, fontWeight: "bold", color: "white",
       letterSpacing: 2}}>Upload Image</Text>
 
        </View>
        <View style={{
-         marginTop: 40
+         marginTop: 40,
+        //  backgroundColor: "green",
+         flex: 1,
+        //  borderTopLeftRadius: 30,
+        //  borderTopRightRadius: 30,
+         paddingTop: 20
        }}>
 
          <View style={styles.textInputContainer}>
