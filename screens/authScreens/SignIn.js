@@ -6,6 +6,10 @@ import { signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { UserContext } from '../../context/UserContext'
 import Loading from '../../components/Loading'
+import * as Animatable from "react-native-animatable"
+import { LinearGradient } from 'expo-linear-gradient'
+
+
 
 export default function SignIn({navigation}) {
 
@@ -95,79 +99,63 @@ if(loading)
 return <Loading />
 
   return (
-    <SafeAreaView style={{
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      backgroundColor: "#e0ebeb",
-      flex: 1
-    }}>
-       <View style={{
-         alignItems: "center",
-         marginTop: 50
-       }}>
+    <View style={styles.container}>
+          <View style={styles.header}>
+              <Text style={styles.title}>Welcome !</Text>
+          </View>
 
-       <Image 
-       source={require('../../assets/images/shopping-bag.png')} 
-       style={{
-         width: 100,
-         height: 100
-       }}/>
+          <Animatable.View style={styles.footer} animation="fadeInUpBig">
 
-       <Text style={{fontSize: 25, fontWeight: "bold", color: "#3d5c5c",
-      letterSpacing: 5}}>Delivery App</Text>
+              <View style={styles.textInputContainer}>
+                  <MaterialIcons name="person" size={20} color="#3d5c5c" style={{
+                      marginLeft: 6,
+                  }} />
+                  <TextInput
+                      placeholder='Email'
+                      value={email}
+                      onChangeText={(text) => setEmail(text)}
+                      style={styles.textInput} />
 
-       </View>
-       <View style={{
-         marginTop: 40
-       }}>
+              </View>
 
-         <View style={styles.textInputContainer}>
-         <MaterialIcons name="person" size={20} color="#3d5c5c" style={{
-           marginLeft: 6,
-         }}/>
-          <TextInput 
-          placeholder='Email' 
-          value={email}
-          onChangeText={(text)=>setEmail(text)}
-          style={styles.textInput}/>
-           
-         </View>
+              <View style={styles.textInputContainer}>
+                  <MaterialIcons name="lock" size={20} color="#3d5c5c" style={{
+                      marginLeft: 6,
+                  }} />
+                  <TextInput
+                      placeholder='Password'
+                      value={password}
+                      onChangeText={(text) => setPassword(text)}
+                      style={styles.textInput}
+                      secureTextEntry />
 
-         <View style={styles.textInputContainer}>
-         <MaterialIcons name="lock" size={20} color="#3d5c5c" style={{
-           marginLeft: 6,
-         }}/>
-          <TextInput 
-          placeholder='Password' 
-          value={password}
-          onChangeText={(text)=>setPassword(text)}
-          style={styles.textInput}
-          secureTextEntry/>
-           
-         </View>
+              </View>
 
-         <TouchableOpacity  onPress={()=>SignInUser()}>
-           <View style={{
-             backgroundColor: "#0080ff",
-             marginHorizontal: 25,
-             borderRadius: 5,
-             marginTop: 20
-           
-           }}>
-             <Text style={{
-               padding: 16,
-               textAlign: "center",
-               color: "white",
-               fontWeight: "bold",
-               fontSize: 15,
-               letterSpacing: 2
-             }}>Sign In</Text>
-           </View>
-         </TouchableOpacity>
-         
+              <TouchableOpacity onPress={() => SignInUser()}>
 
-       </View>
- 
-    </SafeAreaView>
+              <LinearGradient
+                          colors={['#948E99', '#2E1437']}
+                          style={styles.signInButton} >
+                          <Text style={{...styles.signInText, color: 'white'}}>Sign In</Text>
+              </LinearGradient>
+                 
+              </TouchableOpacity>
+
+              {/* <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+
+              <LinearGradient
+                          colors={['#ada996', '#f2f2f2', '#dbdbdb', '#eaeaea']}
+                          style={styles.signInButton} >
+                          <Text style={styles.signInText}>Sign Up</Text>
+              </LinearGradient>
+              
+              </TouchableOpacity> */}
+
+
+          </Animatable.View>
+
+      </View>
+      
       
      
   )

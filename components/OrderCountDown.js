@@ -68,7 +68,7 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
          setShowOrderCountDown(false)
          setShowOrderCountDown(false)
          setOpacity(1)
-         setBottomSheetHeight("95%")
+         setBottomSheetHeight("90%")
         
         // updateOrder(order.id, APP_CONSTANT.ACCEPTED, auth.currentUser?.uid)
         
@@ -99,7 +99,7 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
           onComplete={()=>{
                setShowOrderCountDown(false)
                setOpacity(1)
-               setBottomSheetHeight("95%")
+               setBottomSheetHeight("90%")
                setMapdirection(false)
           }}
           size={100}
