@@ -1,6 +1,6 @@
 import { View, Text, FlatList, useWindowDimensions, ActivityIndicator, 
   Switch, StyleSheet, TouchableOpacity, } from 'react-native'
-import React, { useRef, useState, useEffect, useContext} from 'react'
+import React, { useRef, useState, useMemo, useEffect, useContext} from 'react'
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet'
 import OrderItem from '../components/OrderItem'
 import { orders } from '../global/data'
@@ -43,7 +43,7 @@ export default function OrdersScreen({route, navigation}) {
   const { width, height } = useWindowDimensions()
   const [opacity, setOpacity]= useState(0.9)
   const [showOrderCountDown, setShowOrderCountDown] = useState(false)
-  const [bottomSheetHeight, setBottomSheetHeight] = useState("90%")
+  const [bottomSheetHeight, setBottomSheetHeight] = useState("89%")
   const [mapdirection, setMapdirection] = useState(false)
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [order, setOrder] = useState({})
@@ -61,6 +61,8 @@ export default function OrdersScreen({route, navigation}) {
   )
 
   const [loading, setLoading] = useState(false)
+
+  const _Dashboard = useMemo(()=><Dashboard navigation={navigation} />, [])
 
 
    const getAvailability = ()=>{
@@ -243,7 +245,7 @@ export default function OrdersScreen({route, navigation}) {
            
              {route.params.myLocation && <Loading />}
              {loading && <Loading />}
-            {route.params.dashboard && <Dashboard navigation={navigation} />}
+            {route.params.dashboard && _Dashboard}
 
             {route.params.status && 
              <BottomSheetScrollView>

@@ -30,7 +30,7 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
         setShowOrderCountDown(false)
         setShowOrderCountDown(false)
         setOpacity(1)
-        setBottomSheetHeight("95%")
+        setBottomSheetHeight("90%")
       }}
        style={{
         flexDirection: "row",
