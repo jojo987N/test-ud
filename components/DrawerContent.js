@@ -7,7 +7,7 @@ import {
     DrawerItem
 } from '@react-navigation/drawer'
 //import {signOut } from 'firebase/auth'
-//import { auth } from '../firebase'
+//import { auth } from '../firebase/utils'
 import { useNavigation } from '@react-navigation/native'
 //import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Entypo, MaterialIcons } from '@expo/vector-icons'; 
@@ -15,7 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import OrdersScreen from '../screens/OrdersScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { signOut } from 'firebase/auth'
-import { auth } from '../firebase'
+import { auth } from '../firebase/utils'
 
 
 export default function DrawerContent(props) {

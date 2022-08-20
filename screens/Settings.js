@@ -9,8 +9,8 @@ import * as Permissions from 'expo-permissions'
 import {Camera} from "expo-camera"
 //import storage from '@react-native-firebase/storage'
 //import {} from 'firebase/app'
-import { updateProduct } from "../firebase"
-//import {firebaseConfig} from './firebase'
+import { updateProduct } from "../firebase/utils"
+//import {firebaseConfig} from './firebase/utils'
 import {getDownloadURL, getStorage, ref, uploadBytes} from 'firebase/storage'
 import SettingsComponent from "../components/SettingsComponent";
 import { MenuButton } from "./OrdersScreen";

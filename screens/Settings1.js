@@ -4,9 +4,9 @@ import {colors} from '../global'
 import {Icon,Button} from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 //import auth from '@react-native-firebase/auth';
-import {auth} from '../firebase'
+import {auth} from '../firebase/utils'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
-import { addUser } from '../firebase';
+import { addUser } from '../firebase/utils';
 
 const initialValues = {phone_number:'',name:"",family_name:"",password:"",email:'',username:''}
 

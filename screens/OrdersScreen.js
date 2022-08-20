@@ -10,7 +10,7 @@ import OrderCountDown from '../components/OrderCountDown'
 import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
-import { db, updateDriverOnOff, driversCol, auth, ordersCol} from '../firebase'
+import { db, updateDriverOnOff, driversCol, auth, ordersCol} from '../firebase/utils'
 import {collection, orderBy, query, limit, onSnapshot, where, getDocs} from 'firebase/firestore'
 import { currency } from '../global'
 import LottieView from 'lottie-react-native'

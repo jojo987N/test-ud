@@ -1,9 +1,6 @@
 export const currency = "$"
-
 export const grey1 = "#e6e6e6"
-
 export const APP_CONSTANT = {
-
     YOU_ARE: "You're",
     ONLINE: "online",
     OFFLINE: "offline",
@@ -17,7 +14,6 @@ export const APP_CONSTANT = {
     FINISH: "Finish",
     COMPLETED: "Completed"
 }
-
 export const colors = {
     buttons: "black",
     grey1: "#43484d",

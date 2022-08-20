@@ -1,34 +1,15 @@
-import {initializeApp} from 'firebase/app'
+import firebaseApp from './config';
 import {addDoc, getFirestore, collection, getDocs, doc, 
-  deleteDoc, orderBy, query, limit, serverTimestamp, onSnapshot, 
-  updateDoc, where} from 'firebase/firestore'
-import { LogBox } from 'react-native';
-import { getAuth } from 'firebase/auth';
-import { APP_CONSTANT } from './global';
-
-LogBox.ignoreLogs(['Setting a timer'])
-LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
-
-
-const firebaseConfig = {
-
-    apiKey: "AIzaSyBKG5-vG_pBdRdKHX30UYUF9_F7SOt8Co4",
+    deleteDoc, orderBy, query, limit, serverTimestamp, onSnapshot, 
+    updateDoc, where} from 'firebase/firestore'
+  import { LogBox } from 'react-native';
+  import { getAuth } from 'firebase/auth';
+  import { APP_CONSTANT } from '../global';
   
-    authDomain: "uber-eats-a4c19.firebaseapp.com",
-  
-    projectId: "uber-eats-a4c19",
-  
-    storageBucket: "uber-eats-a4c19.appspot.com",
-  
-    messagingSenderId: "976827322571",
-  
-    appId: "1:976827322571:web:8ba517048bb9928f938b4e"
-  
-  };
+  LogBox.ignoreLogs(['Setting a timer'])
+  LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
 
-  const firebaseApp = initializeApp(firebaseConfig);
-
-  export const auth = getAuth(firebaseApp)
+export const auth = getAuth(firebaseApp)
 
   export const db = getFirestore()
 
@@ -276,4 +257,3 @@ export const getDriverInfos = ()=>{
 
 
  
-

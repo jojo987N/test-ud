@@ -1,6 +1,6 @@
 import { View, Text, ScrollView} from 'react-native'
 import React, {useEffect, useState} from 'react'
-import { auth, getOrders, ordersCol } from '../firebase'
+import { auth, getOrders, ordersCol } from '../firebase/utils'
 import OrderItem from './OrderItem'
 import { APP_CONSTANT } from '../global'
 import {getDocs, onSnapshot, query, where } from 'firebase/firestore'

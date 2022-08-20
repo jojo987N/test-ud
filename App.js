@@ -2,7 +2,7 @@ import { View, SafeAreaView, StatusBar} from "react-native";
 import RootNavigation from "./navigation/navigation";
 import OrderDelivery from "./screens/OrderDelivery";
 import OrdersScreen from "./screens/OrdersScreen";
-import {} from "./firebase"
+// import {} from "./firebase/utils"
 
 export default function App() {
 

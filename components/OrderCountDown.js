@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
-import { auth, updateOrder } from '../firebase';
+import { auth, updateOrder } from '../firebase/utils';
 import { APP_CONSTANT } from '../global';
 
 export default function OrderCountDown({setOpacity, setShowOrderCountDown, 
