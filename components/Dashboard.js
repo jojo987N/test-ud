@@ -1,15 +1,6 @@
 import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
 import React, { createElement } from 'react'
-import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
-  } from "react-native-chart-kit";
-
-  import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
   
 import { dashboardItems } from '../global/data';
 
@@ -24,50 +15,7 @@ export default function Dashboard({navigation}) {
      
     <View style={styles.container}>
        
-  <LineChart
-    data={{
-      labels: ["January", "February", "March", "April", "May", "June"],
-      datasets: [
-        {
-          data: [
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100
-          ]
-        }
-      ]
-    }}
-   // width={Dimensions.get("window").width} // from react-native
-   width = {Dimensions.get("window").width-20}
-    height={220}
-    yAxisLabel="$"
-    yAxisSuffix="k"
-    yAxisInterval={1} // optional, defaults to 1
-    chartConfig={{
-      backgroundColor: "#e26a00",
-      backgroundGradientFrom: "#fb8c00",
-      backgroundGradientTo: "#ffa726",
-      decimalPlaces: 2, // optional, defaults to 2dp
-      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      style: {
-        borderRadius: 16
-      },
-      propsForDots: {
-        r: "6",
-        strokeWidth: "2",
-        stroke: "#ffa726"
-      }
-    }}
-    bezier
-    style={{
-      marginVertical: 8,
-      borderRadius: 16
-    }}
-  />
+ 
     <View style={styles.container2}>
         <Total title={`TOTAL REVENUE`} value="$32,575"/>
         <Total title={`TOTAL PROFIT`} value="$20,590"/>

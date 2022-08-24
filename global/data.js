@@ -1,17 +1,19 @@
 import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
+import { colors } from "react-native-elements";
+import { APP_CONSTANT, icon } from "../global";
 
  export const dashboardItems = [
     {
-     label: "Home",
+     label: APP_CONSTANT.HOME,
      icon: {
        type: Entypo,
-       name: "home",
+       name: icon.HOME,
        size: 24,
-       color: "black"
+       color: colors.black
      },
     },
     {
-     label: "History",
+     label: APP_CONSTANT.HISTORY,
      icon: {
        type: FontAwesome,
        name: "history",

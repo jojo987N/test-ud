@@ -16,12 +16,10 @@ import InfosContainer from '../components/InfosContainer';
 import { APP_CONSTANT, grey1 } from '../global';
 import { onSnapshot, query, where } from 'firebase/firestore';
 import UserProducts from '../components/UserProducts';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
  
-
 export default function OrderDelivery({route}) {
 
-  const {order, location} = route.params
+  const {order} = route.params
   const navigation = useNavigation()
 
  // console.log("DELIVERY : ", order)
@@ -31,7 +29,7 @@ export default function OrderDelivery({route}) {
   
 
 
-  //const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null);
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [totalKm, setTotalKm] = useState(0)
   const [colorButton, setColorButton]= useState("green")
@@ -68,10 +66,7 @@ export default function OrderDelivery({route}) {
     longitude: order.User.lng
   })
 
-  const [waypoints, setWaypoints]= useState([{
-              latitude: order.Restaurant.lat,
-              longitude: order.Restaurant.lng,
-            }])
+   
 
    
     const bottomSheet = useRef(null)
@@ -82,52 +77,8 @@ export default function OrderDelivery({route}) {
 
 
 
-    const renderButtonTitle = ()=>{
-       
-      if(orderStatus === APP_CONSTANT.ACCEPTED){
-        return APP_CONSTANT.START_DELIVERY
-      }
-      if(orderStatus === APP_CONSTANT.START_DELIVERY){
-
-        return APP_CONSTANT.PICK_UP
-      }
-      if(orderStatus === APP_CONSTANT.PICKED_UP){
-
-        return APP_CONSTANT.FINISH
-      }
-      if(orderStatus === APP_CONSTANT.COMPLETED){
-
-        return APP_CONSTANT.COMPLETED
-      }
-      if(orderStatus === APP_CONSTANT.CANCELED){
-
-        return APP_CONSTANT.CANCELED
-      }
-    }
-
-    const renderButtonColor = ()=>{
-       
-      if(orderStatus === APP_CONSTANT.ACCEPTED){
-        return "green"
-      }
-      if(orderStatus === APP_CONSTANT.START_DELIVERY){
-
-        return "orange"
-      }
-      if(orderStatus === APP_CONSTANT.PICKED_UP){
-
-        return "#996300"
-      }
-      if(orderStatus === APP_CONSTANT.COMPLETED){
-
-        return "blue"
-      }
-      if(orderStatus === APP_CONSTANT.CANCELED){
-
-        return "red"
-      }
-    }
-
+  
+   
 
 
     const getOrderStatus = ()=>{
@@ -155,12 +106,7 @@ export default function OrderDelivery({route}) {
 
         if(orderStatus === APP_CONSTANT.ACCEPTED){
 
-          bottomSheet?.current.collapse()
-  
-          mapRef?.current?.getCamera().then((cam)=>{
-           cam.zoom += 1;
-           mapRef?.current?.animateCamera(cam);
-          })
+         
            setters()
            .then(()=> setDestination({
             latitude: order.Restaurant.lat,
@@ -186,25 +132,6 @@ export default function OrderDelivery({route}) {
 
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
           
-            bottomSheet?.current.collapse()
-
-            setters()
-            .then(()=>  setDestination({
-              latitude: order.User.lat,
-              longitude: order.User.lng
-            }))
-            .then(()=> setTextButton(APP_CONSTANT.FINISH))
-            .then(()=>  setColorButton("#996300"))
-            .then (()=> setIsDriverClose(false))
-
-          //   setDestination({
-          //     latitude: order.User.lat,
-          //     longitude: order.User.lng
-          //   })
-          //   setTextButton(APP_CONSTANT.FINISH)
-          //   setColorButton("#996300")
-          //  setIsDriverClose(false)
-
            updateOrder(order.id, APP_CONSTANT.PICKED_UP)
           
         }
@@ -224,31 +151,27 @@ export default function OrderDelivery({route}) {
     useEffect(() => {
 
       // getOrderStatus()  //ICII
-      // (async () => {
-      //   let { status } = await Location.requestForegroundPermissionsAsync();
+      (async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
   
-      //   //console.log(status)
-      //   if (status !== 'granted') {
-      //     setErrorMsg('Permission to access location was denied');
-      //     return;
-      //   }
+        //console.log(status)
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+        }
   
-      //   let location = await Location.getCurrentPositionAsync({});
-      //   setLocation({
-      //     latitude: location.coords.latitude,
-      //     longitude: location.coords.longitude
-      //   });
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude
+        });
 
-
-
-      //  setLatitude(location.coords.latitude)
-      //  setLongitude(location.coords.longitude)
-        //console.log(location)
 
 
        
+       
   
-     // })();
+     })();
 
         // const foregroundSubscription = Location.watchPositionAsync({
         //   accuracy: Location.Accuracy.High,

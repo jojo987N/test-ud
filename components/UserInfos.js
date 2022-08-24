@@ -1,29 +1,28 @@
 import { View, Text, StyleSheet} from 'react-native'
 import React from 'react'
 import { MaterialIcons} from '@expo/vector-icons';
+import Phone from './Phone';
 
 
 export default function UserInfos({order}) {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.user_name}>{order.User.name}</Text>
-      <Text style={styles.address}>{order.User.address}</Text>
-      <View style={styles.phoneContainer}>
-        <Text style={styles.phone}>{order.User.phone}</Text>
-      </View>
-      
 
-       {Object.entries(order.User.items.map(item => item.name).reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {}))
-      .map(([name, quantity], index)=>
-      <View style={styles.items} key={index}>
-        <Text style={styles.item_name}>{name}</Text>
-        <MaterialIcons name="close" size={12} color="black" />
-        <Text style={styles.item_quantity}>{quantity}</Text>
-      </View>)}
+    <View style={styles.icon_name_phone}>
+       <View style={styles.icon_name}>
+           <Ionicons name="person" size={20} color="black" />
+            <Text style={styles.name}>{order.User.name}</Text>
+       </View>
+        <Phone order={order} />
 
     </View>
 
+    <View style={styles.address_icon}>
+        <Entypo name="location-pin" size={24} color="black" style={styles.icon}/>
+        <Text style={styles.address} >{order[content].address}</Text>
+    </View>
+</View>
   )
 }
 
@@ -32,42 +31,44 @@ export default function UserInfos({order}) {
 
 const styles = StyleSheet.create({
 
-    container: {
+  container:{
 
-     // alignItems: "center",
-     marginLeft: 20
+     // alignItems: "center"
+     marginHorizontal: 25,
+      marginBottom: 30,
+      //borderWidth: 1
 
-    },
-    user_name: {
-     fontWeight: "bold",
-     fontSize: 25,
-     marginTop: 30,
-     //paddingVertical: 20,
-    },
-    address: {
-
-    },
-    phoneContainer:{
-     
-    },
-    phone: {
-
-    },
-    items: {
-
-      flexDirection: "row",
-      alignItems: "center",
-      marginTop: 20
-
-    },
-    item_name: {
-      // flex: 1,
-      // borderWidth: 1
-      marginRight: 10,
+  },
+  icon_name_phone:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: 'center',
+   // marginLeft: 5
+  },
+  icon_name: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  name: {
+      fontSize: 23,
       fontWeight: "bold",
-      color: "grey"
-    },
-    item_quantity: {
+      paddingVertical: 20,
+      marginLeft: 5
+  },
+  address_icon: {
+   flexDirection: "row",
+   alignItems: "center",
+   //borderWidth: 1,
+   
+   
+  },
+  address: {
+    width: 250,
+    marginLeft: 5
+  },
+  icon: {
+     // borderWidth: 1,
+      
+  }
 
-    }
-  })
+})

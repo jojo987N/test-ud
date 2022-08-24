@@ -10,6 +10,7 @@ import History from '../screens/History';
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import Settings from '../screens/Settings';
 import { useNavigation } from '@react-navigation/native'
+import Home from '../screens/Home';
 
 const Drawer = createDrawerNavigator();
 
@@ -54,8 +55,8 @@ export default function DrawerNavigator() {
 
         <Drawer.Screen 
             name = "Home"
-            initialParams={{dashboard: "dashboard"}}
-            component={OrdersScreen}
+            // initialParams={{dashboard: "dashboard"}}
+            component={Home}
             options={{
                 title: "Home",
                 drawerIcon: ({focussed, size}) =>(

@@ -15,6 +15,8 @@ export default function Orders({location, route, setLoading}) {
 
   
   useEffect(()=>{
+
+    console.log("deegghfkhkjlj:")
     setLoading(true)
     //const q = query(ordersCol, where('driverId', '==', auth.currentUser?.uid ))
      
