@@ -1,11 +1,11 @@
 import { View, Text, SafeAreaView, StatusBar, Image, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 import React, {useState, useEffect, useContext} from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
-import { auth, getDriverInfos} from '../../firebase/utils'
+import { auth, getDriverInfos} from '../firebase/utils'
 import { signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { UserContext } from '../../context/UserContext'
-import Loading from '../../components/Loading'
+import { UserContext } from '../context/UserContext'
+import Loading from '../components/Loading'
 
 export default function SignIn({navigation}) {
 

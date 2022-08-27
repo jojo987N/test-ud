@@ -1,10 +1,12 @@
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { ordersCol } from '../firebase/utils'
+import { auth, getOrders, ordersCol } from '../firebase/utils'
+import OrderItem from './OrderItem'
 import { APP_CONSTANT, colors, icon, screen } from '../global'
-import { getDocs} from 'firebase/firestore'
+import { getDocs, onSnapshot, query, where } from 'firebase/firestore'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export default function History() {
+export default function OrdersConfirmed() {
 
   const [orders, setOrders] = useState([])
 
@@ -12,7 +14,7 @@ export default function History() {
 
     getDocs(ordersCol).then(snapshot => {
 
-      setOrders(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+      setOrders(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).filter(order => order.status === APP_CONSTANT.STATUS.CONFIRMED))
     })
 
   }, [])
@@ -22,7 +24,7 @@ export default function History() {
   return (
     <View>
       {orders.map((order, index) => {
-        <Pressable key={index} style={styles.container} onPress={() => navigation.navigate(screen.STARTED_ORDER_DETAILS, { order: order })}>
+        <Pressable key={index} style={styles.container} onPress={() => navigation.navigate(screen.ORDER_CONFIRMED_DETAILS, { order: order })}>
 
           <Image source={{ uri: order.User.items[0].restaurant.image_url }} style={styles.image} />
 
@@ -33,7 +35,7 @@ export default function History() {
             <Text style={styles.orderId}>{order.orderId}</Text>
           </View>
           <View style={styles.status}>
-            <Entypo name={icon.STARTED_ORDER} size={30} color={colors.CHECK} />
+            <Entypo name={icon.ORDER_CONFIRMED} size={30} color={colors.CHECK} />
           </View>
 
 

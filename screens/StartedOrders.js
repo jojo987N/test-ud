@@ -4,7 +4,7 @@ import { ordersCol } from '../firebase/utils'
 import { APP_CONSTANT, colors, icon, screen } from '../global'
 import { getDocs} from 'firebase/firestore'
 
-export default function History() {
+export default function StartedOrders() {
 
   const [orders, setOrders] = useState([])
 
@@ -12,7 +12,7 @@ export default function History() {
 
     getDocs(ordersCol).then(snapshot => {
 
-      setOrders(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+      setOrders(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).filter(order => order.status === APP_CONSTANT.STATUS.START_DELIVERY))
     })
 
   }, [])

@@ -1,0 +1,23 @@
+{
+    "YOU_ARE": "You're",
+    "ONLINE": "online",
+    "OFFLINE": "offline",
+    "PICK_UP": "Pick-Up Order",
+    "FINISH": "Finish",
+    "UPLOAD_PHOTO": "Upload Photo",
+    "TAKE_A_PHOTO": "Take a Photo",
+    "CHOOSE_FROM_LIBRARY": "Choose From Library",
+    "CANCEL": "Cancel",
+    "UPLOAD_IMAGE": "Upload Image",
+    "RESTAURANT_NAME": "Restaurant Name",
+    "UPDATE": "Update",
+    "PERMISSION_TO_CAMERA": "Permission to acces camera roll is required",
+    "GRANTED": "granted",
+    "PERMISSION_TO_LOCATION_DENIED": "Permission to access location was denied",
+    "OFF": "OFF",
+    "GO": "GO",
+    "HOME": "Home",
+    "HISTORY": "history",
+    "TOTAL_REVENUE": "TOTAL REVENUE",
+    "TOTAL_PROFIT": "TOTAL PROFIT"
+}

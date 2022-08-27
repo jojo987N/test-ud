@@ -1,10 +1,10 @@
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { ordersCol } from '../firebase/utils'
 import { APP_CONSTANT, colors, icon, screen } from '../global'
-import { getDocs} from 'firebase/firestore'
+import { getDocs } from 'firebase/firestore'
 
-export default function History() {
+export default function OrdersCanceled() {
 
   const [orders, setOrders] = useState([])
 
@@ -12,7 +12,7 @@ export default function History() {
 
     getDocs(ordersCol).then(snapshot => {
 
-      setOrders(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+      setOrders(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).filter(order => order.status === APP_CONSTANT.STATUS.CANCELED))
     })
 
   }, [])
@@ -22,7 +22,7 @@ export default function History() {
   return (
     <View>
       {orders.map((order, index) => {
-        <Pressable key={index} style={styles.container} onPress={() => navigation.navigate(screen.STARTED_ORDER_DETAILS, { order: order })}>
+        <Pressable key={index} style={styles.container} onPress={() => navigation.navigate(screen.ORDER_CANCELED_DETAILS, { order: order })}>
 
           <Image source={{ uri: order.User.items[0].restaurant.image_url }} style={styles.image} />
 
@@ -33,7 +33,7 @@ export default function History() {
             <Text style={styles.orderId}>{order.orderId}</Text>
           </View>
           <View style={styles.status}>
-            <Entypo name={icon.STARTED_ORDER} size={30} color={colors.CHECK} />
+            <Entypo name={icon.ORDER_CANCELED} size={30} color={colors.CHECK} />
           </View>
 
 
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     margin: 10,
-    borderColor: colors.ORDER_CONFIRMED
+    borderColor: colors.ORDER_CANCELED
   },
   infos: {
     flex: 1,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     color: colors.grey3
   },
   status: {
-    backgroundColor: colors.ORDER_CONFIRMED,
+    backgroundColor: colors.ORDER_CANCELED,
     borderBottomRightRadius: 8,
     borderTopRightRadius: 8,
     justifyContent: "center"

@@ -1,214 +1,144 @@
 import React from 'react'
-import {createDrawerNavigator} from '@react-navigation/drawer'
-//import BottomTabs from './BottomTabs'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import { Icon } from 'react-native-elements';
 import OrdersScreen from '../screens/OrdersScreen';
-//import BusinessConsoleScreen from '../screens/BusinessConsoleScreen';
 import DrawerContent from '../components/DrawerContent';
-import Dashboard from '../components/Dashboard';
-import History from '../screens/History';
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import Settings from '../screens/Settings';
 import { useNavigation } from '@react-navigation/native'
 import Home from '../screens/Home';
+import { APP_CONSTANT, icon, screen } from '../global';
 
 const Drawer = createDrawerNavigator();
-
 export default function DrawerNavigator() {
   const navigation = useNavigation()
   return (
-    <Drawer.Navigator  
-    screenOptions={{headerShown: false }}
-    drawerContent= {props => <DrawerContent {...props}/>}
-    useLegacyImplementation={true}
+    <Drawer.Navigator
+      screenOptions={{ headerShown: false }}
+      drawerContent={props => <DrawerContent {...props} />}
+      useLegacyImplementation={true}
     >
-        {/* <Drawer.Screen 
-            name = "BottomTabs"
-            component={BottomTabs}
-            options={{
-                title: "Client",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                    type="material-community"
-                    name="home"
-                    color={focussed ? "black":""}
-                    size={size}
-                  />  
-                )
-            }}
-        /> */}
-        {/* <Drawer.Screen 
-            name = "OrdersScreen"
-            component={OrdersScreen}
-            options={{
-                title: "Business",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                    type="material"
-                    name="business"
-                    color={focussed ? "black":""}
-                    size={size}
-                  />  
-                )
-            }}
-        /> */}
-
-        <Drawer.Screen 
-            name = "Home"
-            // initialParams={{dashboard: "dashboard"}}
-            component={Home}
-            options={{
-                title: "Home",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                  type="material-community"
-                  name="home"
-                  color={focussed}
-                  size={size}
-              />
-                )
-            }}
-
-            onPress={()=>navigation.closeDrawer()}
-        />
-
-    <Drawer.Screen 
-            name = "History"
-            initialParams={{status: "history"}}
-            component={OrdersScreen}
-            options={{
-                title: "History",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                        type="material-community"
-                        name="history"
-                        color={focussed}
-                        size={size}
-                    />
-                )
-            }}
-        />
-
-    <Drawer.Screen 
-            name = "Orders Confirmed"
-            initialParams={{status: "ACCEPTED"}}
-            component={OrdersScreen}
-            options={{
-                title: "Orders Confirmed",
-                drawerIcon: ({focussed, size}) =>(
-                  <MaterialIcons 
-                  name="confirmation-num" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        />
-
-    {/* <Drawer.Screen 
-            name = "Orders In Progress"
-            initialParams={{status: "InProgress"}}
-            component={OrdersScreen}
-            options={{
-                title: "Orders In Progress",
-                drawerIcon: ({focussed, size}) =>(
-                  <MaterialIcons 
-                  name="pending" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        /> */}
-
-      <Drawer.Screen 
-            name = "Start Delivery"
-            initialParams={{status: "Start Delivery"}}
-            component={OrdersScreen}
-            options={{
-                title: "Start Delivery",
-                drawerIcon: ({focussed, size}) =>(
-                  <FontAwesome 
-                  name="hourglass-start" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        />
-        <Drawer.Screen 
-            name = "Orders Picked Up"
-            initialParams={{status: "PICKED_UP"}}
-            component={OrdersScreen}
-            options={{
-                title: "Orders Picked Up",
-                drawerIcon: ({focussed, size}) =>(
-                  <MaterialIcons 
-                  name="delivery-dining" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        />
-
-      <Drawer.Screen 
-            name = "Orders Completed"
-            initialParams={{status: "Completed"}}
-            component={OrdersScreen}
-            options={{
-                title: "Orders Completed",
-                drawerIcon: ({focussed, size}) =>(
-                  <AntDesign name="checkcircle" 
-                  size={size} color={focussed} />
-                )
-            }}
-        />
-
-      <Drawer.Screen 
-            name = "Orders Canceled"
-            initialParams={{status: "CANCELED"}}
-            component={OrdersScreen}
-            options={{
-                title: "Orders Canceled",
-                drawerIcon: ({focussed, size}) =>(
-                  <MaterialIcons 
-                  name="cancel" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        />
-      <Drawer.Screen 
-            name = "My Location"
-            initialParams={{myLocation: true}}
-            component={OrdersScreen}
-            options={{
-                title: "My Location",
-                drawerIcon: ({focussed, size}) =>(
-                  <Entypo
-                  name="location" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        />
-
-    <Drawer.Screen 
-            name = "Settings"
-            //initialParams={{}}
-            component={Settings}
-            options={{
-                title: "Settings",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                  type="material-community"
-                  name="cog-outline"
-                  color={focussed}
-                  size={size}
-              />
-                )
-            }}
-        />
-
-
-
+      <Drawer.Screen
+        name={screen.HOME}
+        component={Home}
+        options={{
+          title: APP_CONSTANT.TEXT.HOME,
+          drawerIcon: ({ focussed, size }) => (
+            <Icon
+              type="material-community"
+              name={icon.HOME}
+              color={focussed}
+              size={size}
+            />
+          )
+        }}
+        onPress={() => navigation.closeDrawer()}
+      />
+      <Drawer.Screen
+        name={screen.HISTORY}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.HISTORY,
+          drawerIcon: ({ focussed, size }) => (
+            <Icon
+              type="material-community"
+              name={icon.HISTORY}
+              color={focussed}
+              size={size}
+            />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.ORDERS_CONFIRMED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDER_CONFIRMED}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={screen.STARTED_ORDERS}
+        component={OrdersScreen}
+        options={{
+          title: screen.STARTED_ORDERS,
+          drawerIcon: ({ focussed, size }) => (
+            <FontAwesome
+              name={icon.DRAWER_STARTED_ORDERS}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.ORDERS_PICKED_UP}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_PICKED_UP,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDERS_PICKED_UP}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.ORDERS_COMPLETED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_COMPLETED,
+          drawerIcon: ({ focussed, size }) => (
+            <AntDesign name={icon.DRAWER_ORDERS_COMPLETED}
+              size={size} color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.ORDERS_CANCELED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_CANCELED,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDERS_CANCELED}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.MY_LOCATION}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.MY_LOCATION,
+          drawerIcon: ({ focussed, size }) => (
+            <Entypo
+              name={icon.MY_LOCATION}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        component={Settings}
+        options={{
+          title: APP_CONSTANT.TEXT.SETTINGS,
+          drawerIcon: ({ focussed, size }) => (
+            <Icon
+              type="material-community"
+              name={icon.DRAWER_SETTINGS}
+              color={focussed}
+              size={size}
+            />
+          )
+        }}
+      />
     </Drawer.Navigator>
   )
 }

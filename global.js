@@ -7,15 +7,8 @@ export const APP_CONSTANT = {
         YOU_ARE: "You're",
         ONLINE: "online",
         OFFLINE: "offline",
-        COMFIRMED: "confirmed",
-        START_DELIVERY : "Start Delivery",
-        ACCEPTED: "ACCEPTED",
-        CANCELED: "CANCELED",
-        INPROGRESS: "InProgress",
-        PICKED_UP: "PICKED_UP",
         PICK_UP: "Pick-Up Order",
         FINISH: "Finish",
-        COMPLETED: "Completed",
         UPLOAD_PHOTO: "Upload Photo",
         TAKE_A_PHOTO: "Take a Photo",
         CHOOSE_FROM_LIBRARY: "Choose From Library",
@@ -31,18 +24,34 @@ export const APP_CONSTANT = {
         HOME: "Home",
         HISTORY: "history",
         TOTAL_REVENUE: "TOTAL REVENUE",
-        TOTAL_PROFIT: "TOTAL PROFIT"
+        TOTAL_PROFIT: "TOTAL PROFIT",
+        ORDER_ID: "Order Id",
+        STARTED_ORDERS: "Started Orders",
+        COMPLETED: "Completed",
+        CANCELED: "Canceled",
+        ORDERS_CONFIRMED: "Orders Confirmed",
+        ORDERS_PICKED_UP: "Orders Picked Up",
+        ORDERS_COMPLETED: "Orders Completed",
+        ORDERS_CANCELED: "Orders Canceled",
+        MY_LOCATION: "My Location",
+        SETTINGS: "Settings"
+         
+    },
+    STATUS: {
+        CONFIRMED: "confirmed",
+        STARTED_ORDER : "Start Delivery",
+        ACCEPTED: "ACCEPTED",
+        CANCELED: "CANCELED",
+        INPROGRESS: "InProgress",
+        PICKED_UP: "PICKED_UP",
+        COMPLETED: "Completed", 
     }
-        
-        
 }
+
 export const colors = {
     buttons: "black",
     grey1: "#43484d",
     grey2: "#5e6977",
-    grey3: "#86939e",
-    grey4: "#bdc6cf",
-    grey5: "#e1e8ee",
     green2: "#008000",
     white: "#ffffff",
     black: "#000000",
@@ -50,18 +59,67 @@ export const colors = {
     cardbackground: 'white',
     statusbar: '#ff8c52',
     headerText: 'white',
-    GO: "blue"
+    GO: "blue",
+    ORDER_CONFIRMED: "#008000",
+    STARTED_ORDER : "#ffa500",
+    ORDER_CANCELED: "#ff0000",
+    ORDER_INPROGRESS: "#a52a2a",
+    ORDER_PICKED_UP: "#511515",
+    ORDER_COMPLETED: "#0000ff",
+    ADDRESS: "grey",
+    CHECK: "white",
+    handleIndicatorStyle: "grey"
 }
 
 export const icon = {
     restaurant: "shop",
     HOME: "home",
+    ORDER_CONFIRMED: "check",
+    STARTED_ORDER : "check",
+    ORDER_CANCELED: "check",
+    ORDER_INPROGRESS: "check",
+    ORDER_PICKED_UP: "check",
+    ORDER_COMPLETED: "check",
+    USER_MARKER: "user",
+    RESTAURANT_MARKER: "restaurant",
+    HISTORY: "History",
+    DRAWER_ORDER_CONFIRMED: "confirmation-num",
+    DRAWER_STARTED_ORDERS: "hourglass-start",
+    DRAWER_ORDERS_PICKED_UP: "delivery-dining",
+    DRAWER_ORDERS_COMPLETED: "checkcircle",
+    DRAWER_ORDERS_CANCELED: "cancel",
+    MY_LOCATION: "location",
+    DRAWER_SETTINGS: "cog-outline"
+     
 }
 
 export const font = {
     GO: "bold"
 }
 
+export const screen = {
+    ORDER_CONFIRMED_DETAILS: "OrderConfirmedDetails",
+    ORDER_PICKED_UP_DETAILS: "OrderPickedUpDetails",
+    STARTED_ORDER_DETAILS: "StartedOrderDetails",
+    ORDER_COMPLETED_DETAILS: "OrdercompletedDetails",
+    ORDER_CANCELED_DETAILS: "OrderCanceledDetails",
+    SIGN_IN: "SignIn",
+    DRAWER_NAVIGATOR: "DrawerNavigator",
+    ORDERS_SCREEN: "OrdersScreen",
+    ORDER_DELIVERY: "OrderDelivery",
+    HOME: "Home",
+    HISTORY: "History",
+    ORDERS_CONFIRMED: "OrdersConfirmed",
+    STARTED_ORDERS: "Started Orders"
+   
+}
+export const delta = {
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421
+  }
+export const _bottomSheet = {
+    snapPoints: ["12%", "95%"]
+}
 export const SCREEN_WIDTH = Dimensions.get('window').width
 export const SCREEN_HEIGHT = Dimensions.get('window').height
 

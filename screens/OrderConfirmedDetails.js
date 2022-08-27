@@ -24,7 +24,7 @@ import { View, Text, ActivityIndicator, useWindowDimensions,
         
           const onButtonPressed = () => {
     
-            updateOrder(order.id, APP_CONSTANT.START_DELIVERY)
+            updateOrder(order.id, APP_CONSTANT.STATUS.STARTED_ORDER)
              
             
           }
@@ -78,7 +78,7 @@ import { View, Text, ActivityIndicator, useWindowDimensions,
               
          {/* Button  */}
         <TouchableOpacity style={styles.buttonContainer} onPress={()=>{
-          // onButtonPressed()  // iciii
+           onButtonPressed()  
           }}>
         <View style={styles.button}>
          <Text style={styles.textButton}>{APP_CONSTANT.TEXT.START_DELIVERY}</Text>
