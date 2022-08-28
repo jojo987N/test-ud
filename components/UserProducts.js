@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet} from 'react-native'
 import React from 'react'
 import { MaterialIcons} from '@expo/vector-icons';
-
 export default function UserProducts({order}) {
   return (
     <View style={styles.container}>
@@ -15,31 +14,21 @@ export default function UserProducts({order}) {
     </View>
   )
 }
-
 const styles = StyleSheet.create({
-
     container: {
-
-     // alignItems: "center",
      marginHorizontal: 25,
      marginBottom: 30
-
     },
     items: {
-
       flexDirection: "row",
       alignItems: "center",
       marginTop: 20
-
     },
     item_name: {
-      // flex: 1,
-      // borderWidth: 1
       marginRight: 10,
       fontWeight: "bold",
       color: "grey"
     },
     item_quantity: {
-
     }
   })

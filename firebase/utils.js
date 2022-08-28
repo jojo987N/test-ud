@@ -1,5 +1,5 @@
 import firebaseApp from './config';
-import { addDoc, getFirestore, collection, getDocs, doc, deleteDoc, orderBy, query, limit, serverTimestamp, onSnapshot, updateDoc, where } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, doc, orderBy, query, limit, onSnapshot, updateDoc, where } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth';
 
 export const auth = getAuth(firebaseApp)
@@ -66,14 +66,6 @@ export const getOrders = () => {
     const q = query(ordersCol, where('driverId', '==', auth.currentUser?.uid))
     return getDocs(q).then(snapshot => {
         return snapshot.docs.map((doc) => doc.data())
-    })
-}
-const getOrderMultipleItems = () => {
-    getDocs(ordersCol).then(snapshot => {
-        snapshot.docs.forEach(doc => {
-            if (doc.data().User.items.length > 2)
-                console.log(doc.data().orderId)
-        })
     })
 }
 export const getDriverInfos = () => {
