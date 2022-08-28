@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import OrdersScreen from '../screens/OrdersScreen';
 import OrderDelivery from '../screens/OrderDelivery';
-import SignIn from '../screens/authScreens/SignIn';
+import SignIn from '../screens/SignIn';
 import DrawerNavigator from './DrawerNavigator';
 import { UserContext } from '../context/UserContext';
 import { screen } from '../global';
