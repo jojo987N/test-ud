@@ -6,7 +6,6 @@ import DrawerContent from '../components/DrawerContent';
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import Settings from '../screens/Settings';
 import { useNavigation } from '@react-navigation/native'
-import Home from '../screens/Home';
 import { APP_CONSTANT, icon, screen } from '../global';
 
 const Drawer = createDrawerNavigator();
@@ -18,22 +17,6 @@ export default function DrawerNavigator() {
       drawerContent={props => <DrawerContent {...props} />}
       useLegacyImplementation={true}
     >
-      <Drawer.Screen
-        name={screen.HOME}
-        component={Home}
-        options={{
-          title: APP_CONSTANT.TEXT.HOME,
-          drawerIcon: ({ focussed, size }) => (
-            <Icon
-              type="material-community"
-              name={icon.HOME}
-              color={focussed}
-              size={size}
-            />
-          )
-        }}
-        onPress={() => navigation.closeDrawer()}
-      />
       <Drawer.Screen
         name={screen.HISTORY}
         component={OrdersScreen}
