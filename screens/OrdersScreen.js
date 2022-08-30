@@ -7,7 +7,7 @@ import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
 import { Entypo } from '@expo/vector-icons'
 import { updateDriverOnOff } from '../firebase/utils'
-import { APP_CONSTANT } from '../global'
+import { APP_CONSTANT, SCREEN_HEIGHT, SCREEN_WIDTH } from '../global'
 import OnlineOffLine from '../components/OnlineOffLine'
 import Orders from '../components/Orders'
 import Menu from '../components/Menu'
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
   },
   showOrderCountDown: {
     position: "absolute",
-    width: width,
-    height: height,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
   },
   marker: {
     borderRadius: 20,
