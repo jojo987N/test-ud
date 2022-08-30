@@ -5,7 +5,7 @@ import { auth, getDriverInfos} from '../firebase/utils'
 import { signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { UserContext } from '../context/UserContext'
-import Loading from '../../components/Loading'
+import Loading from '../components/Loading'
 import * as Animatable from "react-native-animatable"
 import { LinearGradient } from 'expo-linear-gradient'
 
