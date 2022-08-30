@@ -97,6 +97,8 @@ export const font = {
     GO: "bold"
 }
 
+export const NOTIFICATION_TIME = 15;
+
 export const screen = {
     ORDER_CONFIRMED_DETAILS: "OrderConfirmedDetails",
     ORDER_PICKED_UP_DETAILS: "OrderPickedUpDetails",
