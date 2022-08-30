@@ -1,5 +1,3 @@
-import { Dimensions } from "react-native"
-
 export const currency = "$"
 export const grey1 = "#e6e6e6"
 export const apikey={/* Your Google Api Here */}
@@ -124,6 +122,4 @@ export const delta = {
 export const _bottomSheet = {
     snapPoints: ["12%", "95%"]
 }
-export const SCREEN_WIDTH = Dimensions.get('window').width
-export const SCREEN_HEIGHT = Dimensions.get('window').height
-
+ 
