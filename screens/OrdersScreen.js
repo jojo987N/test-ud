@@ -91,22 +91,22 @@ export default function OrdersScreen({ route, navigation }) {
         </MapView>
         <MenuButton navigation={navigation} />
         <Earnings earnings={earnings} />
-        
+
         <BottomSheet ref={bottomSheet} index={1} snapPoints={["12%", bottomSheetHeight]}>
           <OnlineOffLine onOffline={onOffline} />
-           
-           
-         
-           
-            <BottomSheetScrollView>
-              
-              <Orders location={location} route={route} setLoading={setLoading} />
-            </BottomSheetScrollView>
-          
+
+
+
+
+          <BottomSheetScrollView>
+
+            <Orders location={location} route={route} setLoading={setLoading} />
+          </BottomSheetScrollView>
+
           <OffButton />
         </BottomSheet>
       </View>
-      
+
     </GestureHandlerRootView>
   )
 }
