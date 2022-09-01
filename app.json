@@ -1,19 +1,25 @@
  {
    "expo": {
-    "name": "Your App Name 10",
-    "icon": "./assets/images/shopping-bag.png",
-    "version": "1.10.0",
-    "slug": "your-app-slug10",
+    "name": "Good Foods Driver",
+    "icon": "./assets/images/logo512.png",
+    "description": "this is Good Foods Driver App", 
+    "splash": {
+      "image": "./assets/images/splash-screen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "version": "1.0.0",
+    "slug": "good-foods-driver0",
     "ios": {
-      "bundleIdentifier": "com.yourcompany.yourappname10",
-      "buildNumber": "1.2.0"
+      "bundleIdentifier": "com.goodfoodsdriver.goodfoodsdriver",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "permissions":[
        "ACCESS_COARSE_LOCATION",
        "ACCESS_FINE_LOCATION"
       ],
-      "package": "com.yourcompany.yourappname10",
+      "package": "com.goodfoodsdriver.goodfoodsdriver",
       "versionCode": 1
     }
    }
