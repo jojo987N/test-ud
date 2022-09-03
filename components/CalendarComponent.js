@@ -31,7 +31,6 @@ export default function CalendarComponent() {
         <Fragment>
          
         <Calendar
-          //testID={testIDs.calendars.FIRST}
           enableSwipeMonths
           current={INITIAL_DATE}
           style={styles.calendar}
