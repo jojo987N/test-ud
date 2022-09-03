@@ -4,17 +4,17 @@ import {initializeApp} from 'firebase/app'
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyBKG5-vG_pBdRdKHX30UYUF9_F7SOt8Co4",
+    apiKey: {/* Your firebase config here */},
   
-    authDomain: "uber-eats-a4c19.firebaseapp.com",
+    authDomain: {/* Your firebase config here */},
   
-    projectId: "uber-eats-a4c19",
+    projectId: {/* Your firebase config here */},
+
+    storageBucket: {/* Your firebase config here */},
   
-    storageBucket: "uber-eats-a4c19.appspot.com",
+    messagingSenderId: {/* Your firebase config here */},
   
-    messagingSenderId: "976827322571",
-  
-    appId: "1:976827322571:web:8ba517048bb9928f938b4e"
+    appId: {/* Your firebase config here */},
   
   };
 

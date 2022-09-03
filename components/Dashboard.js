@@ -1,78 +1,38 @@
 import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
 import React, { createElement } from 'react'
 import { FlatList } from 'react-native-gesture-handler';
-  
 import { dashboardItems } from '../global/data';
 
- 
-
-
 export default function Dashboard({navigation}) {
-
-   
-   
-  return (
-     
-    <View style={styles.container}>
-       
- 
-    <View style={styles.container2}>
+ return (
+   <View style={styles.container}>
+   <View style={styles.container2}>
         <Total title={`TOTAL REVENUE`} value="$32,575"/>
         <Total title={`TOTAL PROFIT`} value="$20,590"/>
     </View>
-
-     
-
-    <FlatList 
-    
-    data={dashboardItems}
+   <FlatList 
+   data={dashboardItems}
     keyExtractor={(item, index)=>String(index)}
     renderItem={({item})=>{
       return (
         <TouchableOpacity onPress={()=>{
           navigation.navigate('DrawerNavigator', {screen: item.label})
-        
-        }} 
+       }} 
         style={styles.iconContainer}>
         {createElement(item.icon.type, {
           name: item.icon.name,
-          //size: item.icon.size,
-          size: 34,
-         // color: item.icon.color
-         color: "#8080ff"
-
-        }, null)}
-         
-          <Text style={styles.textIcon}>{item.label}</Text>
-        
-      </TouchableOpacity>
+         size: 34,
+        color: "#8080ff"
+       }, null)}
+         <Text style={styles.textIcon}>{item.label}</Text>
+     </TouchableOpacity>
       )
     }}
     numColumns={2}
     key={2}
     />
-
-    
-     
-
-    {/* {dashboardItems.map((item, index)=>{
-
-      return (
-        <View key={index} style={styles.iconContainer}>
-          {createElement(item.icon.type, {
-            name: item.icon.name,
-            //size: item.icon.size,
-            size: 34,
-            color: item.icon.color
-
-          }, null)}
-          <Text>{item.label}</Text>
-        </View>
-      )
-    })} */}
-    </View>
-    
-  )
+   </View>
+ )
 }
 
 const Total = ({title, value})=>{
@@ -86,8 +46,7 @@ const Total = ({title, value})=>{
 
 const styles = StyleSheet.create({
     container: {
-    //marginHorizontal: 10
-    alignItems: "center"
+   alignItems: "center"
     },
     container2: {
       flexDirection: "row",
@@ -95,17 +54,14 @@ const styles = StyleSheet.create({
       marginVertical: 10
     },
     totalContainer : {
-     // width: 200,
-      borderWidth: 1,
+     borderWidth: 1,
       borderColor: "#d9d9d9",
-       
-      flex: 1,
+     flex: 1,
       marginHorizontal: 5,
       alignItems: "center",
       borderRadius: 10,
       paddingVertical: 20
-      
-    },
+   },
     totalText: {
         fontWeight: "bold",
         color: "grey",
@@ -121,8 +77,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
       borderRadius: 10,
       paddingVertical: 15,
-      // paddingHorizontal: 65
-      width: 178,
+     width: 178,
       marginBottom: 10,
       borderColor: "#d9d9d9",
     },
