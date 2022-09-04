@@ -116,7 +116,8 @@ export const screen = {
     HOME: "Home",
     HISTORY: "History",
     ORDERS_CONFIRMED: "OrdersConfirmed",
-    STARTED_ORDERS: "Started Orders"
+    STARTED_ORDERS: "Started Orders",
+    SETTINGS: "Settings"
    
 }
 export const delta = {

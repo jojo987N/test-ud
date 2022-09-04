@@ -33,7 +33,7 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_CONFIRMED}
+        name={screen.ORDERS_CONFIRMED}
         component={OrdersScreen}
         options={{
           title: APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
@@ -59,7 +59,7 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_PICKED_UP}
+        name={screen.ORDERS_PICKED_UP}
         component={OrdersScreen}
         options={{
           title: APP_CONSTANT.TEXT.ORDERS_PICKED_UP,
@@ -72,7 +72,7 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_COMPLETED}
+        name={screen.ORDERS_COMPLETED}
         component={OrdersScreen}
         options={{
           title: APP_CONSTANT.TEXT.ORDERS_COMPLETED,
@@ -83,7 +83,7 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_CANCELED}
+        name={screen.ORDERS_CANCELED}
         component={OrdersScreen}
         options={{
           title: APP_CONSTANT.TEXT.ORDERS_CANCELED,
@@ -108,7 +108,21 @@ export default function DrawerNavigator() {
           )
         }}
       />
-      
+      <Drawer.Screen
+        name={screen.SETTINGS}
+        component={Settings}
+        options={{
+          title: APP_CONSTANT.TEXT.SETTINGS,
+          drawerIcon: ({ focussed, size }) => (
+            <Icon
+              type="material-community"
+              name={icon.DRAWER_SETTINGS}
+              color={focussed}
+              size={size}
+            />
+          )
+        }}
+      />
     </Drawer.Navigator>
   )
 }
