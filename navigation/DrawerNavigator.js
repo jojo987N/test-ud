@@ -71,17 +71,7 @@ export default function DrawerNavigator() {
           )
         }}
       />
-      <Drawer.Screen
-        name={screen.ORDERS_COMPLETED}
-        component={OrdersScreen}
-        options={{
-          title: APP_CONSTANT.TEXT.ORDERS_COMPLETED,
-          drawerIcon: ({ focussed, size }) => (
-            <AntDesign name={icon.DRAWER_ORDERS_COMPLETED}
-              size={size} color={focussed} />
-          )
-        }}
-      />
+     
      
       
      
