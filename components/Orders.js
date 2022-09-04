@@ -15,6 +15,7 @@ export default function Orders({ location, route, setLoading }) {
         id: doc.id,
         ...doc.data()
       }))
+      console.log(orders)
       setOrders(orders)
       setLoading(false)
     })
