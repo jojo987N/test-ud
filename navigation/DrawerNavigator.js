@@ -95,6 +95,19 @@ export default function DrawerNavigator() {
           )
         }}
       />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.MY_LOCATION}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.MY_LOCATION,
+          drawerIcon: ({ focussed, size }) => (
+            <Entypo
+              name={icon.MY_LOCATION}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
       
     </Drawer.Navigator>
   )
