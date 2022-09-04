@@ -11,6 +11,16 @@ import { APP_CONSTANT, icon, screen } from '../global';
 const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
   const navigation = useNavigation()
+  console.log(screen.HISTORY,
+    APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
+    APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
+    screen.STARTED_ORDERS,
+    APP_CONSTANT.TEXT.ORDERS_PICKED_UP,
+    APP_CONSTANT.TEXT.ORDERS_COMPLETED,
+    APP_CONSTANT.TEXT.ORDERS_CANCELED,
+    APP_CONSTANT.TEXT.MY_LOCATION,
+    APP_CONSTANT.TEXT.SETTINGS,
+     )
   return (
     <Drawer.Navigator
       screenOptions={{ headerShown: false }}
