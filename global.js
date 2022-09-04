@@ -124,7 +124,7 @@ export const screen = {
    
 }
 export const ANIMATION = {
-    LOADING : require("../assets/animations/waiting.json")
+    LOADING : require("./assets/animations/waiting.json")
 }
 export const delta = {
     latitudeDelta: 0.0922,
