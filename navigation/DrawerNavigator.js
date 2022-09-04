@@ -108,21 +108,7 @@ export default function DrawerNavigator() {
           )
         }}
       />
-      <Drawer.Screen
-        name={screen.SETTINGS}
-        component={Settings}
-        options={{
-          title: APP_CONSTANT.TEXT.SETTINGS,
-          drawerIcon: ({ focussed, size }) => (
-            <Icon
-              type="material-community"
-              name={icon.DRAWER_SETTINGS}
-              color={focussed}
-              size={size}
-            />
-          )
-        }}
-      />
+     
     </Drawer.Navigator>
   )
 }
