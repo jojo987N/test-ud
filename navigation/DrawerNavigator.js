@@ -58,9 +58,70 @@ export default function DrawerNavigator() {
           )
         }}
       />
-      
-     
-      
+      <Drawer.Screen
+        name={screen.ORDERS_PICKED_UP}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_PICKED_UP,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDERS_PICKED_UP}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={screen.ORDERS_COMPLETED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_COMPLETED,
+          drawerIcon: ({ focussed, size }) => (
+            <AntDesign name={icon.DRAWER_ORDERS_COMPLETED}
+              size={size} color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={screen.ORDERS_CANCELED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_CANCELED,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDERS_CANCELED}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.MY_LOCATION}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.MY_LOCATION,
+          drawerIcon: ({ focussed, size }) => (
+            <Entypo
+              name={icon.MY_LOCATION}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+      <Drawer.Screen
+        name={screen.SETTINGS}
+        component={Settings}
+        options={{
+          title: APP_CONSTANT.TEXT.SETTINGS,
+          drawerIcon: ({ focussed, size }) => (
+            <Entypo
+              name={icon.MY_LOCATION}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
+
      
     </Drawer.Navigator>
   )

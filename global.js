@@ -117,6 +117,7 @@ export const screen = {
     HISTORY: "History",
     ORDERS_CONFIRMED: "OrdersConfirmed",
     STARTED_ORDERS: "Started Orders",
+    ORDERS_PICKED_UP: "OrdersPickedUp",
     SETTINGS: "Settings"
    
 }
