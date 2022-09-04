@@ -11,16 +11,6 @@ import { APP_CONSTANT, icon, screen } from '../global';
 const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
   const navigation = useNavigation()
-  console.log(screen.HISTORY,
-    APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
-    APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
-    screen.STARTED_ORDERS,
-    APP_CONSTANT.TEXT.ORDERS_PICKED_UP,
-    APP_CONSTANT.TEXT.ORDERS_COMPLETED,
-    APP_CONSTANT.TEXT.ORDERS_CANCELED,
-    APP_CONSTANT.TEXT.MY_LOCATION,
-    APP_CONSTANT.TEXT.SETTINGS,
-     )
   return (
     <Drawer.Navigator
       screenOptions={{ headerShown: false }}
@@ -42,96 +32,7 @@ export default function DrawerNavigator() {
           )
         }}
       />
-      <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_CONFIRMED}
-        component={OrdersScreen}
-        options={{
-          title: APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
-          drawerIcon: ({ focussed, size }) => (
-            <MaterialIcons
-              name={icon.DRAWER_ORDER_CONFIRMED}
-              size={size}
-              color={focussed} />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name={screen.STARTED_ORDERS}
-        component={OrdersScreen}
-        options={{
-          title: screen.STARTED_ORDERS,
-          drawerIcon: ({ focussed, size }) => (
-            <FontAwesome
-              name={icon.DRAWER_STARTED_ORDERS}
-              size={size}
-              color={focussed} />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_PICKED_UP}
-        component={OrdersScreen}
-        options={{
-          title: APP_CONSTANT.TEXT.ORDERS_PICKED_UP,
-          drawerIcon: ({ focussed, size }) => (
-            <MaterialIcons
-              name={icon.DRAWER_ORDERS_PICKED_UP}
-              size={size}
-              color={focussed} />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_COMPLETED}
-        component={OrdersScreen}
-        options={{
-          title: APP_CONSTANT.TEXT.ORDERS_COMPLETED,
-          drawerIcon: ({ focussed, size }) => (
-            <AntDesign name={icon.DRAWER_ORDERS_COMPLETED}
-              size={size} color={focussed} />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name={APP_CONSTANT.TEXT.ORDERS_CANCELED}
-        component={OrdersScreen}
-        options={{
-          title: APP_CONSTANT.TEXT.ORDERS_CANCELED,
-          drawerIcon: ({ focussed, size }) => (
-            <MaterialIcons
-              name={icon.DRAWER_ORDERS_CANCELED}
-              size={size}
-              color={focussed} />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name={APP_CONSTANT.TEXT.MY_LOCATION}
-        component={OrdersScreen}
-        options={{
-          title: APP_CONSTANT.TEXT.MY_LOCATION,
-          drawerIcon: ({ focussed, size }) => (
-            <Entypo
-              name={icon.MY_LOCATION}
-              size={size}
-              color={focussed} />
-          )
-        }}
-      />
-      <Drawer.Screen
-        component={Settings}
-        options={{
-          title: APP_CONSTANT.TEXT.SETTINGS,
-          drawerIcon: ({ focussed, size }) => (
-            <Icon
-              type="material-community"
-              name={icon.DRAWER_SETTINGS}
-              color={focussed}
-              size={size}
-            />
-          )
-        }}
-      />
+     
     </Drawer.Navigator>
   )
 }
