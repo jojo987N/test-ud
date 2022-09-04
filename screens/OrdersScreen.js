@@ -18,6 +18,7 @@ import Loading from '../components/Loading'
 import { colors } from '../global'
 import Earnings from '../components/Earnings'
 import { MenuButton } from '../components/MenuButton'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 export default function OrdersScreen({ route, navigation }) {
   const { userData } = useContext(UserContext)

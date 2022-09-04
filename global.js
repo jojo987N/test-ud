@@ -86,7 +86,7 @@ export const icon = {
     ORDER_COMPLETED: "check",
     USER_MARKER: "user",
     RESTAURANT_MARKER: "restaurant",
-    HISTORY: "History",
+    HISTORY: "history",
     DRAWER_ORDER_CONFIRMED: "confirmation-num",
     DRAWER_STARTED_ORDERS: "hourglass-start",
     DRAWER_ORDERS_PICKED_UP: "delivery-dining",
