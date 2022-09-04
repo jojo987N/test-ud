@@ -53,7 +53,7 @@ export default function OrdersScreen({ route, navigation }) {
     })();
   }, [])
   if(!location)
-  return 
+  return <Loading />
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: colors.grey3, opacity: opacity }}>

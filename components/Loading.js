@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet} from 'react-native'
 import React from 'react'
 import LottieView from 'lottie-react-native'
+import { ANIMATION } from '../global'
 
 
 export default function Loading() {
@@ -12,7 +13,7 @@ export default function Loading() {
       width: 200,
       
     }}
-      source={require("../assets/animations/waiting.json")}
+      source={ANIMATION.LOADING}
       autoPlay
       speed={2}
       loop
