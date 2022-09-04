@@ -45,6 +45,19 @@ export default function DrawerNavigator() {
           )
         }}
       />
+      <Drawer.Screen
+        name={screen.STARTED_ORDERS}
+        component={OrdersScreen}
+        options={{
+          title: screen.STARTED_ORDERS,
+          drawerIcon: ({ focussed, size }) => (
+            <FontAwesome
+              name={icon.DRAWER_STARTED_ORDERS}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
      
     </Drawer.Navigator>
   )
