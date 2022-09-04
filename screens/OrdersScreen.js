@@ -32,7 +32,7 @@ export default function OrdersScreen({ route, navigation }) {
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [order] = useState({})
   const [onOffline] = useState("")
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState();
   const [destination, setDestination] = useState()
   const [loading, setLoading] = useState(false)
   const [earnings, setEarnings] = useState(0)
@@ -52,6 +52,8 @@ export default function OrdersScreen({ route, navigation }) {
       bottomSheet?.current.collapse()
     })();
   }, [])
+  if(!location)
+  return 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: colors.grey3, opacity: opacity }}>
