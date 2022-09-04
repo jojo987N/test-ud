@@ -1,4 +1,6 @@
 import { Dimensions } from "react-native"
+import { LogBox } from 'react-native';
+
 
 export const currency = "$"
 export const grey1 = "#e6e6e6"
@@ -126,4 +128,7 @@ export const _bottomSheet = {
 }
 export const SCREEN_WIDTH = Dimensions.get('window').width
 export const SCREEN_HEIGHT = Dimensions.get('window').height
+
+LogBox.ignoreLogs(['Setting a timer'])
+LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
 
