@@ -82,6 +82,19 @@ export default function DrawerNavigator() {
           )
         }}
       />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.ORDERS_CANCELED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_CANCELED,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDERS_CANCELED}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
       
     </Drawer.Navigator>
   )
