@@ -114,10 +114,12 @@ export default function DrawerNavigator() {
         options={{
           title: APP_CONSTANT.TEXT.SETTINGS,
           drawerIcon: ({ focussed, size }) => (
-            <Entypo
-              name={icon.MY_LOCATION}
-              size={size}
-              color={focussed} />
+            <Icon 
+            type="material-community"
+            name={icon.DRAWER_SETTINGS}
+            color={focussed}
+            size={size}
+        />
           )
         }}
       />

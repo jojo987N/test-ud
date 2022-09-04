@@ -118,6 +118,8 @@ export const screen = {
     ORDERS_CONFIRMED: "OrdersConfirmed",
     STARTED_ORDERS: "Started Orders",
     ORDERS_PICKED_UP: "OrdersPickedUp",
+    ORDERS_COMPLETED: "OrdersCompleted",
+    ORDERS_CANCELED: "OrdersCanceled",
     SETTINGS: "Settings"
    
 }
