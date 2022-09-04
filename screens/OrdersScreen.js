@@ -40,7 +40,7 @@ export default function OrdersScreen({ route, navigation }) {
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== APP_CONSTANT.GRANTED) {
+      if (status !== APP_CONSTANT.TEXT.GRANTED) {
         setErrorMsg(APP_CONSTANT.PERMISSION_TO_LOCATION_DENIED);
         return;
       }
