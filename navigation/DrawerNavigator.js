@@ -32,6 +32,19 @@ export default function DrawerNavigator() {
           )
         }}
       />
+      <Drawer.Screen
+        name={APP_CONSTANT.TEXT.ORDERS_CONFIRMED}
+        component={OrdersScreen}
+        options={{
+          title: APP_CONSTANT.TEXT.ORDERS_CONFIRMED,
+          drawerIcon: ({ focussed, size }) => (
+            <MaterialIcons
+              name={icon.DRAWER_ORDER_CONFIRMED}
+              size={size}
+              color={focussed} />
+          )
+        }}
+      />
      
     </Drawer.Navigator>
   )
