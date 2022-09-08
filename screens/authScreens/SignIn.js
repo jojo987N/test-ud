@@ -101,7 +101,7 @@ return <Loading />
   return (
     <View style={styles.container}>
           <View style={styles.header}>
-              <Text style={styles.title}>Welcome !</Text>
+              <Text style={styles.title}>Good Foods Driver !</Text>
           </View>
 
           <Animatable.View style={styles.footer} animation="fadeInUpBig">
