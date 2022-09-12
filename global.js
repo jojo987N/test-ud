@@ -131,7 +131,7 @@ export const delta = {
     longitudeDelta: 0.0421
   }
 export const image = {
-    AVATAR: require("../assets/images/logo.png")
+    AVATAR: require("./assets/images/logo.png")
 }
 export const _bottomSheet = {
     snapPoints: ["12%", "95%"]
