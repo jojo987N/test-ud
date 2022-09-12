@@ -16,6 +16,7 @@ import OrdersScreen from '../screens/OrdersScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase/utils'
+import { image } from '../global'
 
 
 export default function DrawerContent(props) {
@@ -51,7 +52,7 @@ export default function DrawerContent(props) {
                         rounded
                         avatarStyle={styles.avatar}
                         size={75}
-                        source={{ uri: "" }} />
+                        source={image.AVATAR} />
                     <View style={{ marginLeft: 10 }}>
                         <Text style={{
                             fontWeight: "bold",

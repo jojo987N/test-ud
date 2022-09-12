@@ -1,7 +1,7 @@
  {
    "expo": {
     "name": "Your App Name 9",
-    "icon": "./assets/images/logo512.png",
+    "icon": "./assets/images/logo.png",
     "version": "1.9.0",
     "slug": "your-app-slug9",
     "ios": {
