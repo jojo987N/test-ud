@@ -6,10 +6,9 @@ import {
     DrawerItemList,
     DrawerItem
 } from '@react-navigation/drawer'
-//import {signOut } from 'firebase/auth'
-//import { auth } from '../firebase'
+
 import { useNavigation } from '@react-navigation/native'
-//import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import { Entypo, MaterialIcons } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
 import OrdersScreen from '../screens/OrdersScreen'
@@ -22,7 +21,7 @@ export default function DrawerContent(props) {
 
     const [isSignedIn, setIsSignedIn] = useState(true)
 
-    //const auth = getAuth();
+    
     const navigation = useNavigation()
 
     const signOutUser = () => {
@@ -30,14 +29,12 @@ export default function DrawerContent(props) {
         .then(()=>{
         signOut(auth)
         .then(()=>{
-            //console.log('c bon')
-            //navigation.replace('SignScreen') // Efface tout
+            
+            
             navigation.navigate('SignIn')
 
         })
     })
-        // .catch((err)=>console.log(err.code))
-         
     }
   return (
     <View style={styles.container}>
@@ -66,84 +63,6 @@ export default function DrawerContent(props) {
              
             <DrawerItemList {...props} />
 
-            {/* <DrawerItem 
-                label= "Home"
-                icon = {({color,size})=>(
-                    <Icon 
-                        type="material-community"
-                        name="home"
-                        color={color}
-                        size={size}
-                    />
-                )}
-            /> */}
-
-            {/* <DrawerItem 
-                label= "History"
-                icon = {({color,size})=>(
-                    <Icon 
-                        type="material-community"
-                        name="history"
-                        color={color}
-                        size={size}
-                    />
-                )}
-            /> */}
-
-            {/* <DrawerItem 
-                label= "My Location"
-                icon = {({color,size})=>(
-                    <Entypo name="location" size={24} color="black" />
-                )}
-                onPress={()=> navigation.navigate("OrdersScreen", {})}
-            /> */}
-            
-
-            {/* <DrawerItem 
-                label= "Payment"
-                icon = {({color,size})=>(
-                    <Icon 
-                        type="material-community"
-                        name="credit-card-outline"
-                        color={color}
-                        size={size}
-                    />
-                )}
-            />
-
-            <DrawerItem 
-                label= "Stats"
-                icon = {({color,size})=>(
-                <Ionicons name="stats-chart" size={24} color="black" />
-                )}
-            /> */}
-
-            {/* <DrawerItem 
-                label= "Orders In Progress"
-                icon = {({color,size})=>(
-                 <MaterialIcons name="pending" size={24} color="black" />
-                )}
-            /> */}
-
-            {/* <DrawerItem 
-                label= "Orders Confirmed"
-                icon = {({color,size})=>(
-              <MaterialIcons name="confirmation-num" size={24} color="black" />
-              )}
-            /> */}
-            
-            {/* <DrawerItem 
-                label= "Settings"
-                icon = {({color,size})=>(
-                    <Icon 
-                        type="material-community"
-                        name="cog-outline"
-                        color={color}
-                        size={size}
-                    />
-                )}
-            /> */}
-            
         </DrawerContentScrollView>
        <DrawerItem 
                 label= "Sign out"

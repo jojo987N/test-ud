@@ -7,48 +7,23 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker"
 import * as Permissions from 'expo-permissions'
 import {Camera} from "expo-camera"
-//import storage from '@react-native-firebase/storage'
-//import {} from 'firebase/app'
 import { updateProduct } from "../firebase"
-//import {firebaseConfig} from './firebase'
 import {getDownloadURL, getStorage, ref, uploadBytes} from 'firebase/storage'
 import SettingsComponent from "../components/SettingsComponent";
 import { MenuButton } from "./OrdersScreen";
 
-
-//initializeApp(firebaseConfig);
-
 export default function Upload({route, navigation}) {
-
-    
-
     const uploadImage = async (uri)=>{
     const response = await fetch(uri)
-    
     const blob = await response.blob()
-
     const storage = getStorage();
-
-    const storageRef = ref(storage, 'restaurant/bonmange');
+    const storageRef = ref(storage, 'restaurant/');
     getDownloadURL(storageRef) 
     .then(url=> updateProduct(product_id,url))
-
-    // uploadBytes(storageRef, blob).then((snapshot)=>{
-    //   console.log('Uploaded')
-    // })
-
   }
-
-  //const reference = storage().ref('')
-
   const [image, setImage] = useState(null) 
-
-
-  
   let openImagePickerAsync = async ()=>{
-
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
     if(permissionResult.granted === false){
     alert("Permission to acces camera roll is required")
     return;
@@ -56,27 +31,16 @@ export default function Upload({route, navigation}) {
     let pickerResult = await ImagePicker.launchImageLibraryAsync()
    console.log(pickerResult)
    if(pickerResult.cancelled === true) return;
-
-   //getBlobFromUri(pickerResult.uri)
-  // blobFromUrl(pickerResult.uri)
-
   uploadImage(pickerResult.uri)
-
    setImage(pickerResult.uri)
-
   }
-
-  
   const renderContent = ()=>(
     <View style={{
-      
       backgroundColor: "white",
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
       elevation: 5,
-       
     }}>
-         
         <View style={{
         marginTop: 30
       }}> 
@@ -86,11 +50,8 @@ export default function Upload({route, navigation}) {
           fontWeight: "bold"
         }}>Upload Photo</Text>
       </View>
-       
        <TouchableOpacity  onPress={
-        //()=>bs.current.snapTo(0)
         ()=>openImagePickerAsync()
-       
       }> 
       <View style={{
         marginTop: 30,
@@ -136,52 +97,27 @@ export default function Upload({route, navigation}) {
           color: "white",
         }}>Cancel</Text>
       </View>
-      
     </View>
-    
   )
-  
    const bs = useRef()
-
    useEffect(()=>{
-      
     setTimeout(()=>{
-        
         bs.current.snapTo(2)
     }, 2000)
    }, [])
   return (
     <GestureHandlerRootView style={{
-     // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       backgroundColor: "#eee",
       flex: 1,
-     // justifyContent: "flex-start",
       alignItems: "center",
     }}>
       <BottomSheet 
       ref={bs}
       snapPoints={["47%","90%", 0]}
       renderContent={renderContent}
-      //borderRadius={10}
-      
-       
-        
             />
-        
-      {/* <Text>Upload Image</Text> */}
       <View style={{
-       // backgroundColor: "#cccccc",
-        //width: 100,
-        //marginTop: 10,
-        //borderRadius: 10
-        
       }}>
-        {/* <Text style={{
-          padding: 8,
-          textAlign: "center",
-          fontWeight: "bold"
-        }}>Post</Text> */}
-
         {image?(<Image source={{uri: image}} 
         style={{
           width: 400,
@@ -189,25 +125,10 @@ export default function Upload({route, navigation}) {
           alignSelf: "flex-start",
           resizeMode: "contain"
         }}/>):(<></>)}
-
-         
       </View>
-      {/* <Pressable style={{marginTop: 10}}
-      onPress={
-        ()=>bs.current.snapTo(2)
-      }
-      >
-           <AntDesign name="pluscircle" size={24} color="black" />
-        </Pressable> */}
-        
        <SettingsComponent bs={bs}/>
-
        <MenuButton navigation={navigation} />
-         
     </GestureHandlerRootView>
-      
   );
 }
-
-
  

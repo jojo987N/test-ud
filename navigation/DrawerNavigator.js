@@ -1,9 +1,9 @@
 import React from 'react'
 import {createDrawerNavigator} from '@react-navigation/drawer'
-//import BottomTabs from './BottomTabs'
+
 import { Icon } from 'react-native-elements';
 import OrdersScreen from '../screens/OrdersScreen';
-//import BusinessConsoleScreen from '../screens/BusinessConsoleScreen';
+
 import DrawerContent from '../components/DrawerContent';
 import Dashboard from '../components/Dashboard';
 import History from '../screens/History';
@@ -21,37 +21,6 @@ export default function DrawerNavigator() {
     drawerContent= {props => <DrawerContent {...props}/>}
     useLegacyImplementation={true}
     >
-        {/* <Drawer.Screen 
-            name = "BottomTabs"
-            component={BottomTabs}
-            options={{
-                title: "Client",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                    type="material-community"
-                    name="home"
-                    color={focussed ? "black":""}
-                    size={size}
-                  />  
-                )
-            }}
-        /> */}
-        {/* <Drawer.Screen 
-            name = "OrdersScreen"
-            component={OrdersScreen}
-            options={{
-                title: "Business",
-                drawerIcon: ({focussed, size}) =>(
-                  <Icon 
-                    type="material"
-                    name="business"
-                    color={focussed ? "black":""}
-                    size={size}
-                  />  
-                )
-            }}
-        /> */}
-
         <Drawer.Screen 
             name = "Home"
             initialParams={{dashboard: "dashboard"}}
@@ -102,21 +71,6 @@ export default function DrawerNavigator() {
                 )
             }}
         />
-
-    {/* <Drawer.Screen 
-            name = "Orders In Progress"
-            initialParams={{status: "InProgress"}}
-            component={OrdersScreen}
-            options={{
-                title: "Orders In Progress",
-                drawerIcon: ({focussed, size}) =>(
-                  <MaterialIcons 
-                  name="pending" 
-                  size={size} 
-                  color={focussed} />
-                )
-            }}
-        /> */}
 
       <Drawer.Screen 
             name = "Start Delivery"
@@ -191,7 +145,7 @@ export default function DrawerNavigator() {
 
     <Drawer.Screen 
             name = "Settings"
-            //initialParams={{}}
+            
             component={Settings}
             options={{
                 title: "Settings",

@@ -6,17 +6,13 @@ import {Entypo, Ionicons} from '@expo/vector-icons'
 export default function InfosContainer({order, content}) {
   return (
       <View style={styles.container}>
-
-
           <View style={styles.icon_name_phone}>
              <View style={styles.icon_name}>
                  <Ionicons name={content==="User"?"person":"restaurant"} size={20} color="black" />
                   <Text style={styles.name}>{order[content].name}</Text>
              </View>
               <Phone order={order} />
-
           </View>
-
           <View style={styles.address_icon}>
               <Entypo name="location-pin" size={24} color="black" style={styles.icon}/>
               <Text style={styles.address} >{order[content].address}</Text>
@@ -24,22 +20,15 @@ export default function InfosContainer({order, content}) {
       </View>
   )
 }
-
 const styles = StyleSheet.create({
-
     container:{
-
-       // alignItems: "center"
        marginHorizontal: 25,
         marginBottom: 30,
-        //borderWidth: 1
-
     },
     icon_name_phone:{
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: 'center',
-     // marginLeft: 5
     },
     icon_name: {
       flexDirection: "row",
@@ -54,17 +43,11 @@ const styles = StyleSheet.create({
     address_icon: {
      flexDirection: "row",
      alignItems: "center",
-     //borderWidth: 1,
-     
-     
     },
     address: {
       width: 250,
       marginLeft: 5
     },
     icon: {
-       // borderWidth: 1,
-        
     }
-
 })

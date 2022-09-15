@@ -9,22 +9,14 @@ import { APP_CONSTANT } from '../global';
 export default function OrderCountDown({setOpacity, setShowOrderCountDown, 
   setBottomSheetHeight, setMapdirection, totalMinutes, setDescription,
    order, location}) {
-
     const [duration, setDuration]=useState(15)
-    //const [colorBackground, setColorBackground]= useState("rgb(30,30,30,0.5)")
-
      const navigation = useNavigation()
   return (
     <View style={{
-     //  backgroundColor: colorBackground,
         flex: 1,
        justifyContent: "space-between",
-       // alignItems: "center",
-        
     }}
-     
     >
-
       <TouchableOpacity
       onPress={()=>{
         setShowOrderCountDown(false)
@@ -39,17 +31,13 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
         borderRadius: 30,
         padding: 10,
         margin: 20
-
       }}>
         <MaterialIcons name="close" size={30} color="white" />
         <Text style={{
         color: "white",
-        //padding: 15,
         fontSize: 20
       }}>DECLINE</Text>
-      
       </TouchableOpacity>
-
       <View style={{
         backgroundColor: "#4d4d4d",
         marginHorizontal: 20,
@@ -62,28 +50,13 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
          marginTop: 10,
          marginBottom: 10
        }}>
-        {/* <Text>Delivery</Text> */}
        <TouchableOpacity onPress={()=>{
-
          setShowOrderCountDown(false)
          setShowOrderCountDown(false)
          setOpacity(1)
          setBottomSheetHeight("90%")
-        
-        // updateOrder(order.id, APP_CONSTANT.ACCEPTED, auth.currentUser?.uid)
-        
-        //   navigation.navigate('OrderDelivery', {
-        //     order: order,
-        //     location: location
-        //   })
-        
-          
-       
-       
-
        }}>
          <CountdownCircleTimer
-         
           isPlaying
           duration={duration}
           colors={['#ffffff', '#F7B801', '#A30000', '#A30000' ]}
@@ -94,7 +67,6 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
               else
               setOpacity(0.8)
               setBottomSheetHeight("12%")
-             // console.log(remainingTime)
           }}
           onComplete={()=>{
                setShowOrderCountDown(false)
@@ -110,15 +82,11 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
             color: "white",
             fontWeight: "bold",
             fontSize: 20
-         
           }}>Accept</Text>}
           </CountdownCircleTimer>
        </TouchableOpacity>
-        {/* <Text>Meal</Text> */}
        </View>
-
         <View style={{
-          
         }}>
           <Text style={{
             textAlign: "center",
@@ -126,10 +94,8 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
             color: "white",
             fontWeight: 'bold',
             marginBottom: 8
-
           }}>{totalMinutes
           } min</Text>
-           
         </View>
         <View>
           <Text style={{
@@ -138,12 +104,9 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
             color: "white",
             fontWeight: 'bold',
             marginBottom: 2
-
           }}>151 3rd St, San Francisco</Text>
         </View>
       </View>
-      
-        
     </View>
   )
 }

@@ -15,31 +15,21 @@ export default function UserProducts({order}) {
     </View>
   )
 }
-
 const styles = StyleSheet.create({
-
     container: {
-
-     // alignItems: "center",
      marginHorizontal: 25,
      marginBottom: 30
-
     },
     items: {
-
       flexDirection: "row",
       alignItems: "center",
       marginTop: 20
-
     },
     item_name: {
-      // flex: 1,
-      // borderWidth: 1
       marginRight: 10,
       fontWeight: "bold",
       color: "grey"
     },
     item_quantity: {
-
     }
   })

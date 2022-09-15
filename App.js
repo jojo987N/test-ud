@@ -1,7 +1,5 @@
 import { View, SafeAreaView, StatusBar} from "react-native";
 import RootNavigation from "./navigation/navigation";
-import OrderDelivery from "./screens/OrderDelivery";
-import OrdersScreen from "./screens/OrdersScreen";
 import {} from "./firebase"
 
 export default function App() {
@@ -15,9 +13,6 @@ export default function App() {
         }}>
        
       <RootNavigation />
-      {/* <OrdersScreen /> */}
-      {/* <OrderDelivery /> */}
-      
        </SafeAreaView>
       
   

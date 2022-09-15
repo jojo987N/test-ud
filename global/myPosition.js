@@ -26,12 +26,5 @@ export default function myPosition() {
       text = JSON.stringify(location)
   }
   return location ;
-  // return (
-
-  //   <View>
-  //       <Text>{text}</Text>
-  //   </View>
-
-  // )
 }
   

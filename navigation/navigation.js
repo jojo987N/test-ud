@@ -8,7 +8,6 @@ import SignIn from '../screens/authScreens/SignIn';
 import DrawerNavigator from './DrawerNavigator';
 import { UserContext } from '../context/UserContext';
 import SignUp from '../screens/authScreens/SignUp';
- 
 
 export default function RootNavigation() {
     const Stack = createStackNavigator();
@@ -18,17 +17,12 @@ export default function RootNavigation() {
       <UserContext.Provider  value={{userData, setUserData}}>
         <Stack.Navigator>
            
-            {/* <UserContext.Provider  value={{userData, setUserData}}> */}
                <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}}/>
                <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
               <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{headerShown: false}}/>
-            {/* </UserContext.Provider> */}
           
             <Stack.Screen name="OrdersScreen" component={OrdersScreen} options={{headerShown: false}}/>
             <Stack.Screen name="OrderDelivery" component={OrderDelivery} options={{headerShown: false}}/>
-            
-            
-
 
         </Stack.Navigator>
         </UserContext.Provider>

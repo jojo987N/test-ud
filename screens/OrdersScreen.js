@@ -24,21 +24,8 @@ import { UserContext } from '../context/UserContext'
 import CalendarComponent from '../components/CalendarComponent'
 import Loading from '../components/Loading'
 
- 
- 
-
 export default function OrdersScreen({route, navigation}) {
-
   const {userData} = useContext(UserContext)
-
-   
-
-
- // const {loc} = route.params
-
-  
- // console.log(loc)
-
   const bottomSheet = useRef(null)
   const { width, height } = useWindowDimensions()
   const [opacity, setOpacity]= useState(0.9)
@@ -48,7 +35,6 @@ export default function OrdersScreen({route, navigation}) {
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [order, setOrder] = useState({})
   const [onOffline, setOnOffline] = useState("")
-
   const [location, setLocation] = useState({
     latitude: userData.lat,
     longitude: userData.lng
@@ -59,46 +45,18 @@ export default function OrdersScreen({route, navigation}) {
     longitude: -122.42
   }
   )
-
   const [loading, setLoading] = useState(false)
-
   const _Dashboard = useMemo(()=><Dashboard navigation={navigation} />, [])
-
-
    const getAvailability = ()=>{
-
-    //const q= query(driversCol, where('Id', '==', auth.currentUser?.uid))
     const q= query(driversCol, where('Id', '==', userData.Id))
-
     onSnapshot(q, (snapshot)=>{
-    
        setOnOffline(snapshot.docs[0].data().onOff)
-
       })
    } 
-
-
-
   const getOrders = ()=>{
-
-    //const colRef = collection(db, 'orders')
-    //const q= query(colRef, orderBy('createdAt', 'desc'), limit(1))
-
-   // const orders = []
-
-    // onSnapshot(q, (snapshot)=>{
-
-      
-
-      // onSnapshot(ordersCol, (snapshot)=>{
-
-         
         getDocs(ordersCol).then(snapshot =>{
-           
           snapshot.docs.forEach((doc) => {
-        
             if(doc.data().createdAt && doc.data().status === APP_CONSTANT.COMFIRMED && onOffline === APP_CONSTANT.ONLINE) {
-    
              setOrder({id: doc.id, 
                       ...doc.data()
                       })
@@ -108,104 +66,52 @@ export default function OrdersScreen({route, navigation}) {
               latitude: doc.data().Restaurant.lat,
               longitude: doc.data().Restaurant.lng,
             })
-              
-              
             }
-           
           })
-
-        
     })
-    
-
   }
-
-
   useEffect(() => {
-
-     
-
     route.params.myLocation && (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-
-      //console.log(status)
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-
       let location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
-      
       setLocation({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude
       });
-
       bottomSheet?.current.collapse()
-
-     // console.log(location)
-
     })();
-
-    // getAvailability() // icii
-
-    // getOrders()
-
-
-
-   
-
   }, [])
-
-  // if(!location)
-  //   return(<View style={{flex: 1, justifyContent:"center", alignItems: "center"}}>
-  //      <Text style={{fontSize: 50, fontWeight:"bold"}}>Bonjour</Text>
-  //   </View>)
-    
-  //  <ActivityIndicator size="large"/>
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: "grey" , opacity:opacity}}>
         <MapView
-          //initialRegion
           region={{
-            // latitude: 37.78520111708754,
-            // longitude: -122.43200834862841,
             latitude: location.latitude,
             longitude: location.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
-
           }}
           style={{
             height: height,
             width: width
           }}
-         // showsUserLocation={true}
-         // followsUserLocation
           >
-
           {mapdirection?(<><MapViewDirections
           origin={{
             latitude: location.latitude,
             longitude: location.longitude,}}
-
             destination={destination}
-
             strokeWidth={10}
             strokeColor="green"
             apikey={"AIzaSyAwLZyznRMu86EDLO-fsRL8BgrCT7hXq7g"}
-
             onReady ={(result)=> {
-
               if(result.distance < 0.1){
-               
               }
-              
-             
              setTotalMinutes(result.duration.toFixed())
-              
             }}
             />
              <Marker  
@@ -215,58 +121,33 @@ export default function OrdersScreen({route, navigation}) {
                 backgroundColor: "green",
                 borderRadius: 20,
                 padding : 5
-                
               }}>
                 <Entypo name="shop" size={30} color="white" />
               </View>
-              
             </Marker></>
             ):(<></>)} 
-
-
         </MapView>
-
         <MenuButton navigation={navigation} />
-        
         <Earnings />
-         
-        
        {onOffline === APP_CONSTANT.ONLINE?(<></>):(<GoButton/>)}
-       
        <BottomSheet  ref={bottomSheet} index={1} snapPoints={["12%", bottomSheetHeight]}>
-         
           <OnlineOffLine onOffline={onOffline}/>
-           
              {route.params.myLocation && <Loading />}
              {loading && <Loading />}
             {route.params.dashboard && _Dashboard}
-
             {route.params.status && 
              <BottomSheetScrollView>
-              
                { route.params.status === "history" && <CalendarComponent /> }
                <Orders location={location} route={route} setLoading={setLoading}/>
              </BottomSheetScrollView>
             }
-      
           {route.params.dashboard && <OffButton /> }
-
         </BottomSheet>
-
-       
-
-         
-        
-
-
-         
       </View>
-       
         {showOrderCountDown?(<View style={{
           position: "absolute",
           width: width,
           height:height,
-         
           }}>
           <OrderCountDown setOpacity={setOpacity} setShowOrderCountDown={setShowOrderCountDown}
           setBottomSheetHeight={setBottomSheetHeight}
@@ -274,16 +155,12 @@ export default function OrdersScreen({route, navigation}) {
           totalMinutes = {totalMinutes}
           order={order}
           location={location}
-
            />
         </View>):(<></>)} 
-
     </GestureHandlerRootView>
   )
 }
-
 const Earnings = ()=>{
-
   return (
     <View style={{
       position: "absolute",
@@ -297,7 +174,6 @@ const Earnings = ()=>{
         paddingVertical: 5,
         paddingHorizontal: 10,
         fontSize: 25
-        
       }}>
         <Text style={{
           color: "#1a8cff"
@@ -305,10 +181,6 @@ const Earnings = ()=>{
     </View>
   )
 }
-
- 
-
- 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -316,20 +188,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
- 
-
 const GoButton = ()=>(
-
   <TouchableOpacity
-    
     onPress={()=>{
-       
       updateDriverOnOff(APP_CONSTANT.ONLINE)
      }}
     style={{
       position: "absolute",
       backgroundColor: "blue",
-
       width: 70,
       borderRadius: 50,
       alignItems: "center",
@@ -358,14 +224,9 @@ const GoButton = ()=>(
     />
   </TouchableOpacity>
 )
-
 const OffButton = ()=>(
-   
-
 <TouchableOpacity 
-  
   onPress={()=>{
-     
     updateDriverOnOff(APP_CONSTANT.OFFLINE)
   }}
   style={{
@@ -384,13 +245,9 @@ const OffButton = ()=>(
        color: "white"
      }}>OFF</Text>
   </TouchableOpacity>
-
 )
-
 export const MenuButton = ({navigation})=> {
-
   return (
-
     <View style={{position: "absolute", top: 25, left: 10}}>
       <Menu navigation={navigation} />
     </View>
