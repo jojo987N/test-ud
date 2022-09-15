@@ -96,14 +96,15 @@ const firebaseConfig = {
 export const driversCol = collection(db, 'drivers')
 
 
-const addDriver = async ()=>{
+export const addDriver = async (userCredentials, name, phone)=>{
    
-   const docRef = await addDoc(collection(db, "drivers"), {
-     name: "",
-     status: "",
-
-
-   })
+  addDoc(driversCol, {
+    id: userCredentials.user.uid,
+    name: name,
+    email: userCredentials.user.email,
+    phone: phone,
+  })
+    .then(() => console.log('user create'))
 }
 
 const addOrder= async ()=>{
