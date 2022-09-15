@@ -1,103 +1,52 @@
-import {initializeApp} from 'firebase/app'
-import {addDoc, getFirestore, collection, getDocs, doc, 
-  deleteDoc, orderBy, query, limit, serverTimestamp, onSnapshot, 
-  updateDoc, where} from 'firebase/firestore'
+import { initializeApp } from 'firebase/app'
+import {
+  addDoc, getFirestore, collection, getDocs, doc,
+  deleteDoc, orderBy, query, limit, serverTimestamp, onSnapshot,
+  updateDoc, where
+} from 'firebase/firestore'
 import { LogBox } from 'react-native';
 import { getAuth } from 'firebase/auth';
 import { APP_CONSTANT } from './global';
-
 LogBox.ignoreLogs(['Setting a timer'])
 LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
 
-
 const firebaseConfig = {
-
-    apiKey: "AIzaSyBKG5-vG_pBdRdKHX30UYUF9_F7SOt8Co4",
-  
-    authDomain: "uber-eats-a4c19.firebaseapp.com",
-  
-    projectId: "uber-eats-a4c19",
-  
-    storageBucket: "uber-eats-a4c19.appspot.com",
-  
-    messagingSenderId: "976827322571",
-  
-    appId: "1:976827322571:web:8ba517048bb9928f938b4e"
-  
-  };
-
-  const firebaseApp = initializeApp(firebaseConfig);
-
-  export const auth = getAuth(firebaseApp)
-
-  export const db = getFirestore()
-
-  export const ordersCol = collection(db, 'orders')
-
-  export const getOrdersSimple = ()=>{
-   
-   // const colRef = collection(db, 'orders')
-    const q= query(ordersCol, orderBy('createdAt', 'desc'), limit(1))
-    const orders = []
-
-    return getDocs(q)
+  apiKey: {/* Your firebase config here */ },
+  authDomain: {/* Your firebase config here */ },
+  projectId: {/* Your firebase config here */ },
+  storageBucket: {/* Your firebase config here */ },
+  messagingSenderId: {/* Your firebase config here */ },
+  appId: {/* Your firebase config here */ },
+};
+const firebaseApp = initializeApp(firebaseConfig);
+export const auth = getAuth(firebaseApp)
+export const db = getFirestore()
+export const ordersCol = collection(db, 'orders')
+export const getOrdersSimple = () => {
+  const q = query(ordersCol, orderBy('createdAt', 'desc'), limit(1))
+  const orders = []
+  return getDocs(q)
     .then((snapshot) => {
-       
       snapshot.docs.forEach((doc) => {
-
         orders.push(doc.data())
-       //console.log(doc.data())
-       console.log(doc.id)
+        console.log(doc.id)
       })
-
       return orders
-       
     })
-     
-
-  }
-
-  //getOrdersSimple()
-
-  // Real Time
-
-  export const getOrders1 = ()=>{
-
-    //const colRef = collection(db, 'orders')
-    const q= query(ordersCol, orderBy('createdAt', 'desc'), limit(1))
-    const orders = []
-
-     onSnapshot(q, (snapshot)=>{
-
-          
-         snapshot.docs.forEach((doc) => {
-
-        if(doc.data().createdAt) {
-
-          //console.log(doc.data())
-          orders.push(doc.data())
-        }
-       
-      })
-      
-
+}
+export const getOrders1 = () => {
+  const q = query(ordersCol, orderBy('createdAt', 'desc'), limit(1))
+  const orders = []
+  onSnapshot(q, (snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      if (doc.data().createdAt) {
+        orders.push(doc.data())
+      }
     })
-    //return orders
-   // unsuscribe()
-
-  }
-
- //console.log(getOrders())
-
- // console.log('bb')
-
-// CREATE COURIER
-
+  })
+}
 export const driversCol = collection(db, 'drivers')
-
-
-export const addDriver = async (userCredentials, name, phone)=>{
-   
+export const addDriver = async (userCredentials, name, phone) => {
   addDoc(driversCol, {
     id: userCredentials.user.uid,
     name: name,
@@ -106,16 +55,13 @@ export const addDriver = async (userCredentials, name, phone)=>{
   })
     .then(() => console.log('user create'))
 }
-
-const addOrder= async ()=>{
-   
+const addOrder = async () => {
   const docRef = await addDoc(collection(db, "orders"), {
-
     Restaurant: {
-    name: "Pizza Hutttz58",
-     lat: 4.071510,
-     lng: 9.731240,
-     address: "Los Angeles "
+      name: "Pizza Hutttz58",
+      lat: 4.071510,
+      lng: 9.731240,
+      address: "Los Angeles "
     },
     User: {
       name: "Jojo",
@@ -123,158 +69,69 @@ const addOrder= async ()=>{
       lng: 9.741590,
       phone: "134567889900",
       address: "Los Angeles",
-      items : ["Big Mac", "Cheese Burger","juice"]
+      items: ["Big Mac", "Cheese Burger", "juice"]
     },
     status: "New",
     createdAt: serverTimestamp(),
-
-
-
   })
-
   console.log(docRef.id)
 }
-
-//addOrder()
-
-export const updateOrder = (orderId, status)=>{
-  //0AiZlUQoHPIgS91AppRp
-  //READY_FOR_PICKUP
-  //const docRef = doc(db, 'orders', "0AiZlUQoHPIgS91AppRp")
+export const updateOrder = (orderId, status) => {
   const docRef = doc(db, 'orders', orderId)
-  
   return updateDoc(docRef, {
-     
     status: status,
     driverId: auth.currentUser?.uid,
   })
-  //.then(()=> console.log('good'))
-
 }
-
- 
-
-//updateOrder()
-
-const deleteOrder = ()=>{
-
+const deleteOrder = () => {
   const docRef = doc(db, 'orders', "mxpdee9yriPV5pIE6Zbx")
-
-   deleteDoc(docRef)
- .then(()=>{
-   console.log("supprimé")
- })
-
-}
- 
-//deleteOrder()
-
-export const updateDriverOnOff =  (onOff)=>{
-
-  const q= query(driversCol, where('Id', '==', auth.currentUser?.uid ))
-
-   getDocs(q).then(snapshot =>{
-
-    snapshot.docs.forEach(docc =>{
-
-      updateDoc( doc(db, 'drivers', docc.id) , {
-     
-        onOff : onOff,
-         
-      }).then(()=> console.log('Updated'))
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("supprimé")
     })
-   })
-
-   
 }
-
-export const updateDriverLatLng =  ()=>{
-
-  const q= query(driversCol, where('Id', '==', auth.currentUser?.uid ))
-
-   getDocs(q).then(snapshot =>{
-
-    snapshot.docs.forEach(docc =>{
-
-      updateDoc( doc(db, 'drivers', docc.id) , {
-     
-        lat : 4.091252,
+export const updateDriverOnOff = (onOff) => {
+  const q = query(driversCol, where('Id', '==', auth.currentUser?.uid))
+  getDocs(q).then(snapshot => {
+    snapshot.docs.forEach(docc => {
+      updateDoc(doc(db, 'drivers', docc.id), {
+        onOff: onOff,
+      }).then(() => console.log('Updated'))
+    })
+  })
+}
+export const updateDriverLatLng = () => {
+  const q = query(driversCol, where('Id', '==', auth.currentUser?.uid))
+  getDocs(q).then(snapshot => {
+    snapshot.docs.forEach(docc => {
+      updateDoc(doc(db, 'drivers', docc.id), {
+        lat: 4.091252,
         lng: 9.741085
-         
-      }).then(()=> console.log('Updated'))
+      }).then(() => console.log('Updated'))
     })
-   })
-
-   
+  })
 }
-
-//updateDriverLatLng()
-
- 
- 
-
-export const getDriverAvailability = ()=>{
-
-  const q= query(driversCol, where('Id', '==', auth.currentUser?.uid ))
-  
+export const getDriverAvailability = () => {
+  const q = query(driversCol, where('Id', '==', auth.currentUser?.uid))
   return getDocs(q)
- // .then(snapshot =>{
-
-    // snapshot.docs.forEach(doc =>{
-       
-    //   console.log(doc.data().onOff)
-    // })
- // })
 }
-
-// getDriverAvailability().then(snaps =>{
-
-//   console.log(snaps.docs[0].data().onOff)
-// })
-
-//console.log(auth.currentUser?.uid)
-
-export const getOrders = ()=>{
-
-  const q = query(ordersCol, where('driverId', '==', auth.currentUser?.uid ))
-
-  
+export const getOrders = () => {
+  const q = query(ordersCol, where('driverId', '==', auth.currentUser?.uid))
   return getDocs(q).then(snapshot => {
- 
-    return snapshot.docs.map((doc)=>doc.data())
+    return snapshot.docs.map((doc) => doc.data())
   })
 }
-
-const getOrderMultipleItems = ()=>{
-
-  getDocs(ordersCol).then(snapshot =>{
-    snapshot.docs.forEach(doc =>{
-     // if(doc.data().items)
-      if(doc.data().User.items.length >2)
-      console.log(doc.data().orderId)
+const getOrderMultipleItems = () => {
+  getDocs(ordersCol).then(snapshot => {
+    snapshot.docs.forEach(doc => {
+      if (doc.data().User.items.length > 2)
+        console.log(doc.data().orderId)
     })
   })
 }
-//getOrderMultipleItems()
-
-//getConfirmedOrders()
-
-export const getDriverInfos = ()=>{
-
-  const q= query(driversCol, where('Id', '==', auth.currentUser?.uid ))
-
+export const getDriverInfos = () => {
+  const q = query(driversCol, where('Id', '==', auth.currentUser?.uid))
   return getDocs(q).then(snapshot => {
- 
-    return snapshot.docs.map((doc)=>doc.data())
+    return snapshot.docs.map((doc) => doc.data())
   })
-
 }
-
-// getDriverInfos().then(docs=> console.log({loc: {
-//   latitude: docs[0].lat,
-//   longitude: docs[0].lng,
-// }}))
-
-
- 
-
