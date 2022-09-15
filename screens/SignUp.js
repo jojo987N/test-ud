@@ -1,7 +1,7 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
-import { addUser, auth } from '../firebases'
+import { addUser, auth } from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { LinearGradient } from 'expo-linear-gradient'
 import * as Animatable from "react-native-animatable"
