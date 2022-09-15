@@ -29,8 +29,19 @@ export default function SignIn({navigation}) {
       setLoading(false)
   }
 }
-
- return (
+useEffect(()=>{
+  AsyncStorage.getItem("driverData")
+  .then((value)=>{
+    if(value){
+      let driverData = JSON.parse(value)
+      setUserData(driverData)
+      navigation.navigate('DrawerNavigator')
+    }
+  })
+}, [])
+if(loading)
+return <Loading />
+  return (
     <View style={styles.container}>
           <View style={styles.header}>
               <Text style={styles.title}>Good Foods Driver !</Text>
