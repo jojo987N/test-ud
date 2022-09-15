@@ -1,13 +1,13 @@
 import { View, Text, SafeAreaView, StatusBar, Image, TextInput, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
-import { addUser, auth } from '../firebase'
+import { addUser, auth } from '../../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { LinearGradient } from 'expo-linear-gradient'
 import * as Animatable from "react-native-animatable"
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import Loading from '../components/Loading'
+import Loading from '../../components/Loading'
 
 
 

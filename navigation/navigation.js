@@ -5,10 +5,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import OrdersScreen from '../screens/OrdersScreen';
 import OrderDelivery from '../screens/OrderDelivery';
 import SignIn from '../screens/authScreens/SignIn';
-import Bonjour from '../screens/Bonjour';
 import DrawerNavigator from './DrawerNavigator';
 import { UserContext } from '../context/UserContext';
-import SignUp from '../screens/SignUp';
+import SignUp from '../screens/authScreens/SignUp';
  
 
 export default function RootNavigation() {
