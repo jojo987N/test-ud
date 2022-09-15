@@ -20,7 +20,7 @@ export default function RootNavigation() {
            
             {/* <UserContext.Provider  value={{userData, setUserData}}> */}
                <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}}/>
-               <Stack.Screen name="SignIn" component={SignUp} options={{headerShown: false}}/>
+               <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
               <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{headerShown: false}}/>
             {/* </UserContext.Provider> */}
           
