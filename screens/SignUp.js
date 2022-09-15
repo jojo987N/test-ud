@@ -5,7 +5,6 @@ import { addUser, auth } from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { LinearGradient } from 'expo-linear-gradient'
 import * as Animatable from "react-native-animatable"
-import SearchBar from '../components/SearchBar'
 import { APP_CONSTANT, fonts, icon, screen } from '../global'
 import { colors } from '../global'
 
@@ -25,10 +24,6 @@ export default function SignUp({ navigation }) {
         <Text style={styles.title}>{APP_CONSTANT.TEXT.REGISTER_NOW}</Text>
       </View>
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
-        <View style={{ marginHorizontal: 25 }}>
-          <SearchBar style={{ backgroundColor: colors.white, borderBottomColor: colors.grey, borderBottomWidth: 0.3 }}
-            setAddress={setAddress} />
-        </View>
         <View style={styles.textInputContainer}>
           <Entypo name={icon.EMAIL} size={20} color={colors.inputIcon} style={styles.inputIcon} />
           <TextInput
