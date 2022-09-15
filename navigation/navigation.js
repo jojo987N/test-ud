@@ -8,6 +8,7 @@ import SignIn from '../screens/authScreens/SignIn';
 import Bonjour from '../screens/Bonjour';
 import DrawerNavigator from './DrawerNavigator';
 import { UserContext } from '../context/UserContext';
+import SignUp from '../screens/SignUp';
  
 
 export default function RootNavigation() {
@@ -20,10 +21,10 @@ export default function RootNavigation() {
            
             {/* <UserContext.Provider  value={{userData, setUserData}}> */}
                <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}}/>
+               <Stack.Screen name="SignIn" component={SignUp} options={{headerShown: false}}/>
               <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{headerShown: false}}/>
             {/* </UserContext.Provider> */}
           
-           <Stack.Screen name="Bonjour" component={Bonjour} options={{headerShown: false}}/>
             <Stack.Screen name="OrdersScreen" component={OrdersScreen} options={{headerShown: false}}/>
             <Stack.Screen name="OrderDelivery" component={OrderDelivery} options={{headerShown: false}}/>
             

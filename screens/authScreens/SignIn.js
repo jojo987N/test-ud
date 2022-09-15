@@ -141,7 +141,7 @@ return <Loading />
                  
               </TouchableOpacity>
 
-              {/* <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+              <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
 
               <LinearGradient
                           colors={['#ada996', '#f2f2f2', '#dbdbdb', '#eaeaea']}
@@ -149,7 +149,7 @@ return <Loading />
                           <Text style={styles.signInText}>Sign Up</Text>
               </LinearGradient>
               
-              </TouchableOpacity> */}
+              </TouchableOpacity>
 
 
           </Animatable.View>
