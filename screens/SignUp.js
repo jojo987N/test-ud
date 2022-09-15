@@ -8,7 +8,6 @@ import * as Animatable from "react-native-animatable"
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Loading from '../components/Loading'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 
 
 
