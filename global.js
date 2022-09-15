@@ -1,5 +1,7 @@
 export const currency = "$"
 
+export const apiKey = {/* Your Google api Key here*/}
+
 export const grey1 = "#e6e6e6"
 
 export const APP_CONSTANT = {

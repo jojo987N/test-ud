@@ -12,7 +12,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
 import { db, updateDriverOnOff, driversCol, auth, ordersCol} from '../firebase'
 import {collection, orderBy, query, limit, onSnapshot, where, getDocs} from 'firebase/firestore'
-import { currency } from '../global'
+import { apiKey, currency } from '../global'
 import LottieView from 'lottie-react-native'
 import { APP_CONSTANT } from '../global'
 import OnlineOffLine from '../components/ordersScreen/OnlineOffLine'
@@ -108,7 +108,7 @@ export default function OrdersScreen({route, navigation}) {
             destination={destination}
             strokeWidth={10}
             strokeColor="green"
-            apikey={"AIzaSyAwLZyznRMu86EDLO-fsRL8BgrCT7hXq7g"}
+            apikey={apiKey}
             onReady ={(result)=> {
               if(result.distance < 0.1){
               }
