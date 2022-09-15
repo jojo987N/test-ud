@@ -39,7 +39,7 @@ useEffect(()=>{
     }
   })
 }, [])
-if(!location)
+if(loading)
 return <Loading />
   return (
     <View style={styles.container}>
