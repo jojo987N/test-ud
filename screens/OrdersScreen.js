@@ -82,6 +82,7 @@ export default function OrdersScreen({route, navigation}) {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude
       });
+      if(route.params.myLocation)
       bottomSheet?.current.collapse()
     })();
   }, [])
