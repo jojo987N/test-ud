@@ -12,17 +12,25 @@ LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyBKG5-vG_pBdRdKHX30UYUF9_F7SOt8Co4",
+    // apiKey: "AIzaSyBKG5-vG_pBdRdKHX30UYUF9_F7SOt8Co4",
   
-    authDomain: "uber-eats-a4c19.firebaseapp.com",
+    // authDomain: "uber-eats-a4c19.firebaseapp.com",
   
-    projectId: "uber-eats-a4c19",
+    // projectId: "uber-eats-a4c19",
   
-    storageBucket: "uber-eats-a4c19.appspot.com",
+    // storageBucket: "uber-eats-a4c19.appspot.com",
   
-    messagingSenderId: "976827322571",
+    // messagingSenderId: "976827322571",
   
-    appId: "1:976827322571:web:8ba517048bb9928f938b4e"
+    // appId: "1:976827322571:web:8ba517048bb9928f938b4e"
+
+    apiKey: "AIzaSyDrKqjM-fKGWBqj0-wpOOrIbeVlViEW-3c",
+    authDomain: "good-food-c84d4.firebaseapp.com",
+    projectId: "good-food-c84d4",
+    storageBucket: "good-food-c84d4.appspot.com",
+    messagingSenderId: "716731554402",
+    appId: "1:716731554402:web:bc8a1748f6cdd6885e8f3b",
+    measurementId: "G-VLK10R4D2P"
   
   };
 
