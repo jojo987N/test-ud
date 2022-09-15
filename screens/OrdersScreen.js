@@ -153,13 +153,7 @@ export default function OrdersScreen({route, navigation}) {
 
 
 
-    setTimeout(() => {
-
-      setTotalMinutes(8)
-      setShowOrderCountDown(true)
-       
-      
-    }, 10000);
+   
 
   }, [])
 
