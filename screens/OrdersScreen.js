@@ -71,7 +71,7 @@ export default function OrdersScreen({route, navigation}) {
     })
   }
   useEffect(() => {
-    route.params.myLocation && (async () => {
+    (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
