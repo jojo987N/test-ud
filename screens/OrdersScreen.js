@@ -86,6 +86,9 @@ export default function OrdersScreen({route, navigation}) {
       bottomSheet?.current.collapse()
     })();
   }, [])
+  if(!location)
+  return <Loading />
+  
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: "grey" , opacity:opacity}}>
