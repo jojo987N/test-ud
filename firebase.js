@@ -101,7 +101,7 @@ const deleteOrder = () => {
     })
 }
 export const updateDriverOnOff = (onOff) => {
-  const q = query(driversCol, where('Id', '==', auth.currentUser?.uid))
+  const q = query(driversCol, where('id', '==', auth.currentUser?.uid))
   getDocs(q).then(snapshot => {
     snapshot.docs.forEach(docc => {
       updateDoc(doc(db, 'drivers', docc.id), {
