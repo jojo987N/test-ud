@@ -7,28 +7,7 @@ export default function OrderItem({order, location}) {
   const navigation = useNavigation()
   console.log(order.User.items[0].restaurant.image)
   return (
-      <Pressable style={{...styles.container, borderColor: color(order.status)}} onPress={()=>navigation.navigate("OrderDelivery", {
-         order: order,
-         location: location
-       })}>
-        <Image 
-      source={{uri: order.User.items[0].restaurant.image}} 
-      style={styles.image}/>
-      <View style={styles.user_restaurant_infos}>
-      <Text style={{fontWeight: "bold"}}>{order.Restaurant.name}</Text>
-      <Text style={{color: "grey"}}>{order.Restaurant.address}</Text>
-      <Text style={{marginTop: 10}}>Order Id : </Text>
-      <Text style={{color: "grey"}}>{order.orderId}</Text>
-      </View>
-      <View style={{
-        backgroundColor: color(order.status),
-        borderBottomRightRadius: 8,
-        borderTopRightRadius: 8,
-        justifyContent: "center"
-      }}>
-      <Entypo name="check" size={30} color="white" />
-      </View>
-      </Pressable>
+      <Text>Bonjour</Text>
   );
 }
 const color = (status)=>{
