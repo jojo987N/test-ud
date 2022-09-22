@@ -39,9 +39,7 @@ export default function OrdersScreen({route, navigation}) {
     latitude: userData.lat,
     longitude: userData.lng
   });
- 
-  console.log(userData)
-
+  
   const [destination, setDestination] = useState(
     {
     latitude: 37.70,
