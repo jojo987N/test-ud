@@ -29,16 +29,16 @@ export default function SignIn({navigation}) {
       setLoading(false)
   }
 }
-useEffect(()=>{
-  AsyncStorage.getItem("driverData")
-  .then((value)=>{
-    if(value){
-      let driverData = JSON.parse(value)
-      setUserData(driverData)
-      navigation.navigate('DrawerNavigator')
-    }
-  })
-}, [])
+// useEffect(()=>{
+//   AsyncStorage.getItem("driverData")
+//   .then((value)=>{
+//     if(value){
+//       let driverData = JSON.parse(value)
+//       setUserData(driverData)
+//       navigation.navigate('DrawerNavigator')
+//     }
+//   })
+// }, [])
 if(loading)
 return <Loading />
   return (
