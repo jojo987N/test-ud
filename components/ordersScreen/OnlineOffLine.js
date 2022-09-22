@@ -6,7 +6,7 @@ export default function OnlineOffLine({onOffline}) {
   return (
     <View
     style={{
-      
+      //flex: 1,
       alignItems: "center"
     }}>
       
@@ -14,9 +14,8 @@ export default function OnlineOffLine({onOffline}) {
      fontSize: 25,
      fontWeight: Platform.OS === "android" ? "bold" : "600",
     }}>{ 
-      
-      
-      "You're online"
+       `${APP_CONSTANT.YOU_ARE} ${onOffline.charAt(0).toUpperCase()}${onOffline.slice(1)}`
+      //description
     }</Text>
      
     <Text style={{ color: "grey" }}> Your Orders : </Text>
