@@ -48,7 +48,7 @@ export default function OrdersScreen({route, navigation}) {
   const [loading, setLoading] = useState(false)
   const _Dashboard = useMemo(()=><Dashboard navigation={navigation} />, [])
    const getAvailability = ()=>{
-    const q= query(driversCol, where('id', '==', userData.Id))
+    const q= query(driversCol, where('id', '==', userData.id))
     onSnapshot(q, (snapshot)=>{
        setOnOffline(snapshot.docs[0].data().onOff)
       })
