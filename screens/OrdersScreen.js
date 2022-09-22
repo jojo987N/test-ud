@@ -91,6 +91,9 @@ export default function OrdersScreen({route, navigation}) {
   }, [])
   if(!location)
   return <Loading />
+
+  if(!location)
+  console.log(location)
   
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
