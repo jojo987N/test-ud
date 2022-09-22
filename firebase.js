@@ -52,6 +52,7 @@ export const addDriver = async (userCredentials, name, phone) => {
     name: name,
     email: userCredentials.user.email,
     phone: phone,
+    onOff: APP_CONSTANT.OFFLINE
   })
     .then(() => console.log('user create'))
 }
