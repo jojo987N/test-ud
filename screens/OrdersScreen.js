@@ -85,6 +85,8 @@ export default function OrdersScreen({route, navigation}) {
       if(route.params.myLocation)
       bottomSheet?.current.collapse()
     })();
+    
+    getAvailability()
   }, [])
   if(!location)
   return <Loading />
