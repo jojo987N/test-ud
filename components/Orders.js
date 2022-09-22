@@ -5,6 +5,7 @@ import OrderItem from './OrderItem'
 import { APP_CONSTANT } from '../global'
 import {getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { __esModule } from 'react-native-web'
 
 export default function Orders({location, route, setLoading}) {
   const [orders, setOrders] = useState()
@@ -37,8 +38,11 @@ export default function Orders({location, route, setLoading}) {
     // })
   }, [])
 
-  // if(orders)
-  // setLoading(false)
+   if(!orders)
+   setLoading(true)
+   else
+   setLoading(false)
+   
   return  orders.map((order, index)=> <OrderItem key={index} order={order} location = {location}  />)
      
     
