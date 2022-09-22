@@ -11,7 +11,7 @@ export default function OrderItem({order, location}) {
          location: location
        })}>
         <Image 
-      source={{uri: order.User.items[0].restaurant.image_url}} 
+      source={{uri: order.User.items[0].restaurant.image}} 
       style={styles.image}/>
       <View style={styles.user_restaurant_infos}>
       <Text style={{fontWeight: "bold"}}>{order.Restaurant.name}</Text>
