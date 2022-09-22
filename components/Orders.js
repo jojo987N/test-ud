@@ -10,20 +10,20 @@ export default function Orders({location, route, setLoading}) {
   const [orders, setOrders] = useState([])
   useEffect(()=>{
     setLoading(true)
-    AsyncStorage.getItem("orders").then(value => {
-      if(value){
-        let orders = JSON.parse(value)
-        if (route.params.status !== "history")
-        orders = orders.filter(order => order.status === route.params.status)
-        setOrders(orders)
-        setLoading(false)
-      }
-      else {
+    // AsyncStorage.getItem("orders").then(value => {
+      // if(value){
+      //   let orders = JSON.parse(value)
+      //   if (route.params.status !== "history")
+      //   orders = orders.filter(order => order.status === route.params.status)
+      //   setOrders(orders)
+      //   setLoading(false)
+      // }
+      // else {
         getDocs(ordersCol).then(snapshot => {
-          AsyncStorage.setItem('orders', JSON.stringify(snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          }))))
+          // AsyncStorage.setItem('orders', JSON.stringify(snapshot.docs.map(doc => ({
+          //   id: doc.id,
+          //   ...doc.data()
+          // }))))
           let orders = snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
@@ -33,8 +33,8 @@ export default function Orders({location, route, setLoading}) {
           setOrders(orders)
           setLoading(false)
         })
-      }
-    })
+      // }
+    // })
   }, [])
   return (
     <View>
