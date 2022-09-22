@@ -136,7 +136,7 @@ export default function OrdersScreen({route, navigation}) {
         </MapView>
         <MenuButton navigation={navigation} />
         <Earnings />
-       {onOffline === APP_CONSTANT.ONLINE?(<></>):(<GoButton/>)}
+       {/* {onOffline === APP_CONSTANT.ONLINE?(<></>):(<GoButton/>)} */}
        <BottomSheet  ref={bottomSheet} index={1} snapPoints={["12%", bottomSheetHeight]}>
           <OnlineOffLine onOffline={onOffline}/>
              {route.params.myLocation && <Loading />}
