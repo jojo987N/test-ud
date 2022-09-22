@@ -92,7 +92,7 @@ export default function OrdersScreen({route, navigation}) {
   if(!location)
   return <Loading />
 
-  if(!location)
+  if(location)
   console.log(location)
   
   return (
