@@ -7,7 +7,7 @@ import {getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function Orders({location, route, setLoading}) {
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState()
   useEffect(()=>{
     setLoading(true)
     // AsyncStorage.getItem("orders").then(value => {
@@ -31,15 +31,22 @@ export default function Orders({location, route, setLoading}) {
           if (route.params.status !== "history")
           orders = orders.filter(order => order.status === route.params.status)
           setOrders(orders)
-          setLoading(false)
+          // setLoading(false)
         })
       // }
     // })
   }, [])
+
+  if(orders)
+  setLoading(false)
   return (
+    <> 
+    {orders?
     <View>
        {orders.map((order, index)=> <OrderItem key={index} order={order} location = {location}  />)}
-    </View>
+    </View>:<></>}
+    </>
+   
   )
 }
  
