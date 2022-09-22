@@ -37,8 +37,8 @@ export default function Orders({location, route, setLoading}) {
     // })
   }, [])
 
-  // if(orders)
-  // setLoading(false)
+  if(orders)
+  setLoading(false)
   return (
     <> 
     {orders?
