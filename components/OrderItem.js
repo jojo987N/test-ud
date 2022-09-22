@@ -5,6 +5,7 @@ import { APP_CONSTANT } from "../global";
 
 export default function OrderItem({order, location}) {
   const navigation = useNavigation()
+  console.log(order.User.items[0])
   return (
       <Pressable style={{...styles.container, borderColor: color(order.status)}} onPress={()=>navigation.navigate("OrderDelivery", {
          order: order,
