@@ -34,7 +34,7 @@ export default function OrdersScreen({route, navigation}) {
   const [mapdirection, setMapdirection] = useState(false)
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [order, setOrder] = useState({})
-  const [onOffline, setOnOffline] = useState("")
+  const [onOffline, setOnOffline] = useState(userData.onOff)
   const [location, setLocation] = useState({
     latitude: userData.lat,
     longitude: userData.lng
@@ -48,10 +48,8 @@ export default function OrdersScreen({route, navigation}) {
   const [loading, setLoading] = useState(false)
   const _Dashboard = useMemo(()=><Dashboard navigation={navigation} />, [])
    const getAvailability = ()=>{
-     
     const q= query(driversCol, where('id', '==', userData.id))
     onSnapshot(q, (snapshot)=>{
-      console.log(onOffline)
        setOnOffline(snapshot.docs[0].data().onOff)
       })
    } 
