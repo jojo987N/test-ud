@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export default function Orders({location, route, setLoading}) {
   const [orders, setOrders] = useState()
   useEffect(()=>{
-    setLoading(true)
+    // setLoading(true)
     // AsyncStorage.getItem("orders").then(value => {
       // if(value){
       //   let orders = JSON.parse(value)
@@ -37,8 +37,8 @@ export default function Orders({location, route, setLoading}) {
     // })
   }, [])
 
-  if(orders)
-  setLoading(false)
+  // if(orders)
+  // setLoading(false)
   return (
     <> 
     {orders?
