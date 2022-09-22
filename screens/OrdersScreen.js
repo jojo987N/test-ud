@@ -35,10 +35,7 @@ export default function OrdersScreen({route, navigation}) {
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [order, setOrder] = useState({})
   const [onOffline, setOnOffline] = useState(userData.onOff)
-  const [location, setLocation] = useState({
-    latitude: userData.lat,
-    longitude: userData.lng
-  });
+  const [location, setLocation] = useState();
   
   const [destination, setDestination] = useState(
     {
