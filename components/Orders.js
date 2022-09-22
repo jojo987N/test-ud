@@ -40,12 +40,10 @@ export default function Orders({location, route, setLoading}) {
   // if(orders)
   // setLoading(false)
   return (
-    <> 
-    {orders?
     <View>
        {orders.map((order, index)=> <OrderItem key={index} order={order} location = {location}  />)}
-    </View>:<></>}
-    </>
+    </View> 
+    
    
   )
 }
