@@ -23,6 +23,7 @@ import History from './History'
 import { UserContext } from '../context/UserContext'
 import CalendarComponent from '../components/CalendarComponent'
 import Loading from '../components/Loading'
+import { getDistanceFromLatLonInKm } from '../utils'
 
 export default function OrdersScreen({route, navigation}) {
   const {userData} = useContext(UserContext)
@@ -58,7 +59,10 @@ export default function OrdersScreen({route, navigation}) {
       snapshot.docs.forEach((doc) => {
 
         if (doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
-
+           
+          if(location)
+          console.log(getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng))
+          
           if (location && getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng) < 5) {
 
             setOrder({
@@ -71,7 +75,7 @@ export default function OrdersScreen({route, navigation}) {
               latitude: doc.data().Restaurant.lat,
               longitude: doc.data().Restaurant.lng,
             })
-            
+
           }
 
 
