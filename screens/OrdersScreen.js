@@ -52,21 +52,45 @@ export default function OrdersScreen({route, navigation}) {
       })
    } 
   const getOrders = ()=>{
-        getDocs(ordersCol).then(snapshot =>{
-          snapshot.docs.forEach((doc) => {
-            if(doc.data().createdAt && doc.data().status === APP_CONSTANT.COMFIRMED && onOffline === APP_CONSTANT.ONLINE) {
-             setOrder({id: doc.id, 
-                      ...doc.data()
-                      })
-             setShowOrderCountDown(true)
-             setMapdirection(true)
-             setDestination({
-              latitude: doc.data().Restaurant.lat,
-              longitude: doc.data().Restaurant.lng,
-            })
-            }
-          })
-    })
+
+    onSnapshot(ordersCol, (snapshot)=>{
+      console.log("in")
+     snapshot.docs.forEach((doc) => {
+   
+       if(doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
+
+        setOrder({id: doc.id, 
+                 ...doc.data()
+                 })
+        setShowOrderCountDown(true)
+        setMapdirection(true)
+        setDestination({
+         latitude: doc.data().Restaurant.lat,
+         longitude: doc.data().Restaurant.lng,
+       })
+         
+         
+       }
+      
+     })
+
+   
+})
+    //     getDocs(ordersCol).then(snapshot =>{
+    //       snapshot.docs.forEach((doc) => {
+    //         if(doc.data().createdAt && doc.data().status === APP_CONSTANT.COMFIRMED && onOffline === APP_CONSTANT.ONLINE) {
+    //          setOrder({id: doc.id, 
+    //                   ...doc.data()
+    //                   })
+    //          setShowOrderCountDown(true)
+    //          setMapdirection(true)
+    //          setDestination({
+    //           latitude: doc.data().Restaurant.lat,
+    //           longitude: doc.data().Restaurant.lng,
+    //         })
+    //         }
+    //       })
+    // })
   }
   useEffect(() => {
     (async () => {
@@ -85,6 +109,8 @@ export default function OrdersScreen({route, navigation}) {
     })();
     
     getAvailability()
+
+    getOrders()
   }, [])
   if(!location)
   return <Loading />
