@@ -53,29 +53,37 @@ export default function OrdersScreen({route, navigation}) {
    } 
   const getOrders = ()=>{
 
-    onSnapshot(ordersCol, (snapshot)=>{
+    onSnapshot(ordersCol, (snapshot) => {
       console.log("in")
-     snapshot.docs.forEach((doc) => {
-   
-       if(doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
+      snapshot.docs.forEach((doc) => {
 
-        setOrder({id: doc.id, 
-                 ...doc.data()
-                 })
-        setShowOrderCountDown(true)
-        setMapdirection(true)
-        setDestination({
-         latitude: doc.data().Restaurant.lat,
-         longitude: doc.data().Restaurant.lng,
-       })
-         
-         
-       }
-      
-     })
+        if (doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
 
-   
-})
+          if (location && getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng) < 5) {
+
+            setOrder({
+              id: doc.id,
+              ...doc.data()
+            })
+            setShowOrderCountDown(true)
+            setMapdirection(true)
+            setDestination({
+              latitude: doc.data().Restaurant.lat,
+              longitude: doc.data().Restaurant.lng,
+            })
+            
+          }
+
+
+
+
+
+        }
+
+      })
+
+
+    })
     //     getDocs(ordersCol).then(snapshot =>{
     //       snapshot.docs.forEach((doc) => {
     //         if(doc.data().createdAt && doc.data().status === APP_CONSTANT.COMFIRMED && onOffline === APP_CONSTANT.ONLINE) {
