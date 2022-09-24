@@ -61,16 +61,16 @@ export default function OrdersScreen({route, navigation}) {
           
           if (location && getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng) < 5) {
 
-            setOrder({
-              id: doc.id,
-              ...doc.data()
-            })
-            setShowOrderCountDown(true)
-            setMapdirection(true)
-            setDestination({
-              latitude: doc.data().Restaurant.lat,
-              longitude: doc.data().Restaurant.lng,
-            })
+            // setOrder({
+            //   id: doc.id,
+            //   ...doc.data()
+            // })
+            // setShowOrderCountDown(true)
+            // setMapdirection(true)
+            // setDestination({
+            //   latitude: doc.data().Restaurant.lat,
+            //   longitude: doc.data().Restaurant.lng,
+            // })
 
           }
 
