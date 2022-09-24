@@ -68,10 +68,10 @@ export default function OrdersScreen({route, navigation}) {
              setShowOrderCountDown(true)
              if(destination)
              setMapdirection(true)
-            // setDestination({
-            //   latitude: doc.data().Restaurant.lat,
-            //   longitude: doc.data().Restaurant.lng,
-            // })
+            setDestination({
+              latitude: doc.data().Restaurant.lat,
+              longitude: doc.data().Restaurant.lng,
+            })
 
           }
 
@@ -121,7 +121,7 @@ export default function OrdersScreen({route, navigation}) {
     getAvailability()
 
     getOrders()
-  }, [location])
+  }, [location, destination])
 
   if(!location)
   return <Loading />
