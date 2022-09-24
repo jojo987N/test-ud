@@ -12,7 +12,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
 import { db, updateDriverOnOff, driversCol, auth, ordersCol} from '../firebase'
 import {collection, orderBy, query, limit, onSnapshot, where, getDocs} from 'firebase/firestore'
-import { apiKey, currency } from '../global'
+import { apiKey, currency, RADIUS } from '../global'
 import LottieView from 'lottie-react-native'
 import { APP_CONSTANT } from '../global'
 import OnlineOffLine from '../components/ordersScreen/OnlineOffLine'
@@ -59,7 +59,7 @@ export default function OrdersScreen({route, navigation}) {
           if(location)
           console.log(getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng))
           
-          if (location && getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng) < 5) {
+          if (location && getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng) < RADIUS) {
 
             setOrder({
               id: doc.id,
@@ -134,8 +134,8 @@ export default function OrdersScreen({route, navigation}) {
           region={{
             latitude: location.latitude,
             longitude: location.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
+            latitudeDelta: 0.0422,
+            longitudeDelta: 0.0221
           }}
           style={{
             height: height,

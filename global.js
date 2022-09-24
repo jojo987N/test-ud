@@ -4,6 +4,8 @@ export const apiKey = "AIzaSyAwLZyznRMu86EDLO-fsRL8BgrCT7hXq7g" //{/* Your Googl
 
 export const grey1 = "#e6e6e6"
 
+export const RADIUS = 5;
+
 export const APP_CONSTANT = {
 
     YOU_ARE: "You're",
