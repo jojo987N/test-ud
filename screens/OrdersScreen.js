@@ -101,6 +101,7 @@ export default function OrdersScreen({route, navigation}) {
     // })
   }
   useEffect(() => {
+    if(!location)
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
@@ -120,6 +121,7 @@ export default function OrdersScreen({route, navigation}) {
 
     getOrders()
   }, [location])
+
   if(!location)
   return <Loading />
 
