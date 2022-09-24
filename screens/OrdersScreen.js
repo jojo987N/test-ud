@@ -41,6 +41,7 @@ export default function OrdersScreen({route, navigation}) {
   const [destination, setDestination] = useState()
   const [loading, setLoading] = useState(false)
   const _Dashboard = useMemo(()=><Dashboard navigation={navigation} />, [])
+
    const getAvailability = ()=>{
     const q= query(driversCol, where('id', '==', userData.id))
     onSnapshot(q, (snapshot)=>{
@@ -118,7 +119,7 @@ export default function OrdersScreen({route, navigation}) {
     getAvailability()
 
     getOrders()
-  }, [])
+  }, [location])
   if(!location)
   return <Loading />
 
