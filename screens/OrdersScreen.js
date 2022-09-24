@@ -56,9 +56,6 @@ export default function OrdersScreen({route, navigation}) {
         
         if (doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
           
-          if(location)
-          console.log(getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng))
-          
           if (location && getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng) < RADIUS) {
 
             setOrder({
