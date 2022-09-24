@@ -104,7 +104,7 @@ export default function OrderCountDown({setOpacity, setShowOrderCountDown,
             color: "white",
             fontWeight: 'bold',
             marginBottom: 2
-          }}>151 3rd St, San Francisco</Text>
+          }}>{order.Restaurant.address}</Text>
         </View>
       </View>
     </View>
