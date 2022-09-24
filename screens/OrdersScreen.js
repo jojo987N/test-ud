@@ -38,12 +38,7 @@ export default function OrdersScreen({route, navigation}) {
   const [onOffline, setOnOffline] = useState(userData.onOff)
   const [location, setLocation] = useState();
   
-  const [destination, setDestination] = useState(
-    {
-    latitude: 37.70,
-    longitude: -122.42
-  }
-  )
+  const [destination, setDestination] = useState()
   const [loading, setLoading] = useState(false)
   const _Dashboard = useMemo(()=><Dashboard navigation={navigation} />, [])
    const getAvailability = ()=>{
@@ -59,7 +54,7 @@ export default function OrdersScreen({route, navigation}) {
       snapshot.docs.forEach((doc) => {
 
         if (doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
-           console.log(location)
+         
           if(location)
           console.log(getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng))
           
