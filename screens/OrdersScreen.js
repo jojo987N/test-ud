@@ -50,9 +50,9 @@ export default function OrdersScreen({route, navigation}) {
   const getOrders = ()=>{
 
     onSnapshot(ordersCol, (snapshot) => {
-      console.log("in")
+       
       snapshot.docs.forEach((doc) => {
-
+        console.log("in")
         if (doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
          
           if(location)
