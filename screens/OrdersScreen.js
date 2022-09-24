@@ -52,9 +52,9 @@ export default function OrdersScreen({route, navigation}) {
     onSnapshot(ordersCol, (snapshot) => {
        
       snapshot.docs.forEach((doc) => {
-        console.log("in")
+        
         if (doc.data().createdAt && doc.data().status === APP_CONSTANT.READY && onOffline === APP_CONSTANT.ONLINE) {
-         
+         console.log("in")
           if(location)
           console.log(getDistanceFromLatLonInKm(location.latitude, location.longitude, doc.data().Restaurant.lat, doc.data().Restaurant.lng))
           
