@@ -65,7 +65,7 @@ export default function OrdersScreen({route, navigation}) {
               id: doc.id,
               ...doc.data()
             })
-            // setShowOrderCountDown(true)
+             setShowOrderCountDown(true)
             // setMapdirection(true)
             // setDestination({
             //   latitude: doc.data().Restaurant.lat,
