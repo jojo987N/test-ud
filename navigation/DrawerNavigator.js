@@ -73,11 +73,11 @@ export default function DrawerNavigator() {
         />
 
       <Drawer.Screen 
-            name = "Start Delivery"
-            initialParams={{status: "Start Delivery"}}
+            name = "Orders Started"
+            initialParams={{status: "STARTED"}}
             component={OrdersScreen}
             options={{
-                title: "Start Delivery",
+                title: "Orders Started",
                 drawerIcon: ({focussed, size}) =>(
                   <FontAwesome 
                   name="hourglass-start" 

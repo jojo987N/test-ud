@@ -43,6 +43,7 @@ export default function OrderDelivery({route}) {
     const mapRef = useRef(null)
     const button = useRef(null)
     const { width, height } = useWindowDimensions()
+    
     const renderButtonTitle = ()=>{
       if(orderStatus === APP_CONSTANT.ACCEPTED){
         return APP_CONSTANT.START_DELIVERY
@@ -85,6 +86,7 @@ export default function OrderDelivery({route}) {
       } 
       const setters = async ()=> {
       }
+      
       const onButtonPressed = () => {
         if(orderStatus === APP_CONSTANT.ACCEPTED){
           bottomSheet?.current.collapse()
@@ -100,7 +102,7 @@ export default function OrderDelivery({route}) {
            .then(()=> setWaypoints([]))
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
-        updateOrder(order.id, APP_CONSTANT.START_DELIVERY)
+        updateOrder(order.id, APP_CONSTANT.STARTED)
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
             bottomSheet?.current.collapse()
@@ -157,6 +159,7 @@ export default function OrderDelivery({route}) {
      <Divider size={10} color={grey1}/>
      {/* Button  */}
     <TouchableOpacity style={styles.buttonContainer} onPress={()=>{
+      onButtonPressed()
       }}>
     <View style={{...styles.button, 
       backgroundColor: renderButtonColor()

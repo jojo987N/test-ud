@@ -20,7 +20,8 @@ export const APP_CONSTANT = {
     PICK_UP: "Pick-Up Order",
     FINISH: "Finish",
     COMPLETED: "Completed",
-    READY: "ready"
+    READY: "ready",
+    STARTED : "STARTED",
 }
 
 export const colors = {
