@@ -34,7 +34,7 @@ const color = (status)=>{
   switch (status) {
     case APP_CONSTANT.CANCELED:
       return "red"
-    case APP_CONSTANT.START_DELIVERY:
+    case APP_CONSTANT.STARTED:
       return "orange"
     case APP_CONSTANT.PICKED_UP:
       return "#996300"
