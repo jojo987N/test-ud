@@ -19,8 +19,6 @@ import UserProducts from '../components/UserProducts';
 
 export default function OrderDelivery({route}) {
   const {order, location} = route.params
-
-  console.log(order.status)
   const navigation = useNavigation()
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [totalKm, setTotalKm] = useState(0)
@@ -123,6 +121,7 @@ export default function OrderDelivery({route}) {
         }
       }
     useEffect(() => {
+      getOrderStatus()
     }, []);
   return (
     <GestureHandlerRootView style={{flex: 1}}>
