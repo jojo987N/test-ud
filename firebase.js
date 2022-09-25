@@ -86,11 +86,22 @@ const addOrder = async () => {
   })
   console.log(docRef.id)
 }
-export const updateOrder = (orderId, status) => {
-  const docRef = doc(db, 'orders', orderId)
-  return updateDoc(docRef, {
+export const updateOrder = (order, status, location, userData, totalMinutes) => {
+  const docRef = doc(db, 'orders', order.id)
+
+  const obj = {
+    driver: {
+      ...userData,
+      location, 
+    },
+    totalMinutes,
     status: status,
-    driverId: auth.currentUser?.uid,
+
+  }
+  return updateDoc(docRef, {
+    ...obj
+    // status: status,
+    // driverId: auth.currentUser?.uid,
   })
 }
 const deleteOrder = () => {
