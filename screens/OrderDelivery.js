@@ -19,6 +19,8 @@ import UserProducts from '../components/UserProducts';
 
 export default function OrderDelivery({route}) {
   const {order, location} = route.params
+
+  console.log(order.status)
   const navigation = useNavigation()
   const [totalMinutes, setTotalMinutes] = useState(0)
   const [totalKm, setTotalKm] = useState(0)
@@ -232,7 +234,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textButton: {
-    color: "black",
+    color: "white",
     textAlign: "center",
     fontSize: 22,
     fontWeight: "bold"
