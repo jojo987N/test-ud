@@ -160,7 +160,7 @@ export default function OrderDelivery({route}) {
     <View style={{...styles.button, 
       backgroundColor: renderButtonColor()
       }}>
-     <Text style={styles.textButton}>{
+     <Text style={styles.textButton}>dddd{
      renderButtonTitle()
      }</Text>
     </View>
