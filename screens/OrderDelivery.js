@@ -153,14 +153,14 @@ export default function OrderDelivery({route}) {
       <Divider />
      <InfosContainer order={order} content="User" />
      <UserProducts order={order} />
-     <Divider size={1} color={grey1}/>
+     <Divider size={10} color={grey1}/>
      {/* Button  */}
     <TouchableOpacity style={styles.buttonContainer} onPress={()=>{
       }}>
     <View style={{...styles.button, 
       backgroundColor: renderButtonColor()
       }}>
-     <Text style={styles.textButton}>AAAAAAAAAAAAAAAAAAAAAAAAA{
+     <Text style={styles.textButton}>{
      renderButtonTitle()
      }</Text>
     </View>
