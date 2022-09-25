@@ -48,7 +48,7 @@ export default function OrderDelivery({route}) {
       if(orderStatus === APP_CONSTANT.ACCEPTED){
         return APP_CONSTANT.START_DELIVERY
       }
-      if(orderStatus === APP_CONSTANT.START_DELIVERY){
+      if(orderStatus === APP_CONSTANT.STARTED){
         return APP_CONSTANT.PICK_UP
       }
       if(orderStatus === APP_CONSTANT.PICKED_UP){
@@ -65,7 +65,7 @@ export default function OrderDelivery({route}) {
       if(orderStatus === APP_CONSTANT.ACCEPTED){
         return "green"
       }
-      if(orderStatus === APP_CONSTANT.START_DELIVERY){
+      if(orderStatus === APP_CONSTANT.STARTED){
         return "orange"
       }
       if(orderStatus === APP_CONSTANT.PICKED_UP){
