@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textButton: {
-    color: "white",
+    color: "black",
     textAlign: "center",
     fontSize: 22,
     fontWeight: "bold"
