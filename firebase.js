@@ -90,7 +90,7 @@ export const updateOrder = (order, status, location, userData, totalMinutes) => 
   const docRef = doc(db, 'orders', order.id)
 
   const obj = {
-    driver: {
+    Driver: {
       ...userData,
       location, 
     },
