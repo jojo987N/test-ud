@@ -8,7 +8,7 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
 import { useNavigation } from '@react-navigation/native';
-import { ordersCol, updateOrder } from '../firebase';
+import { ordersCol, updateOrder, updateOrderStatus } from '../firebase';
 import { auth } from '../firebase'
 import UserInfos from '../components/UserInfos';
 import RestaurantInfos from '../components/RestaurantInfos';
@@ -43,7 +43,7 @@ export default function OrderDelivery({route}) {
     const mapRef = useRef(null)
     const button = useRef(null)
     const { width, height } = useWindowDimensions()
-    
+
     const renderButtonTitle = ()=>{
       if(orderStatus === APP_CONSTANT.ACCEPTED){
         return APP_CONSTANT.START_DELIVERY
@@ -102,7 +102,7 @@ export default function OrderDelivery({route}) {
            .then(()=> setWaypoints([]))
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
-        updateOrder(order.id, APP_CONSTANT.STARTED)
+        updateOrderStatus(order.id, APP_CONSTANT.STARTED)
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
             bottomSheet?.current.collapse()

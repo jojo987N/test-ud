@@ -104,6 +104,12 @@ export const updateOrder = (order, status, location, userData, totalMinutes) => 
     // driverId: auth.currentUser?.uid,
   })
 }
+
+export const updateOrderStatus = (orderId, status) => {
+  updateDoc(doc(db, 'orders', orderId), {
+    status
+  })
+}
 const deleteOrder = () => {
   const docRef = doc(db, 'orders', "mxpdee9yriPV5pIE6Zbx")
   deleteDoc(docRef)
