@@ -19,7 +19,9 @@ export default function Orders({location, route, setLoading}) {
       //   setLoading(false)
       // }
       // else {
-        getDocs(ordersCol).then(snapshot => {
+
+        // getDocs(ordersCol).then(snapshot => {
+          onSnapshot(ordersCol, (snapshot)=>{
           // AsyncStorage.setItem('orders', JSON.stringify(snapshot.docs.map(doc => ({
           //   id: doc.id,
           //   ...doc.data()
@@ -33,6 +35,7 @@ export default function Orders({location, route, setLoading}) {
           setOrders(orders)
           // setLoading(false)
         })
+
       // }
     // })
   }, [])
