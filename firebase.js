@@ -96,6 +96,7 @@ export const updateOrder = (order, status, location, userData, totalMinutes) => 
     },
     totalMinutes,
     status: status,
+    remainingTime: totalMinutes 
 
   }
   return updateDoc(docRef, {
