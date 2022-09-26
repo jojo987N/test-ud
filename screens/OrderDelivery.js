@@ -205,15 +205,16 @@ const CustomMarker = ({subject, renderButtonColor, icon})=>{
   )
 }
 const Estimate = ({totalMinutes, totalKm, color})=> (
+
   <View style={{
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20
 }}>
-  <Text style={{fontSize: 25}}>20 min </Text>
+  <Text style={{fontSize: 25}}>{totalMinutes.toFixed()} min </Text>
   <FontAwesome5 name="shopping-bag" size={30} color={color}/>
-  <Text style={{fontSize: 25}}> 4 km </Text>
+  <Text style={{fontSize: 25}}> {totalKm.toFixed()} km </Text>
 </View>
 )
 const Divider = ({size, color})=>{
