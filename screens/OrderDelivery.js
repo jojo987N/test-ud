@@ -27,6 +27,7 @@ export default function OrderDelivery({route}) {
   const [orderStatus, setOrderStatus]=useState(order.status)
   const [isDriverClose, setIsDriverClose] = useState(false)
   const [isDriverFinish, setIsDriverFinish] = useState(false)
+  const [remainingTimeForPickup, setRemainingTimeForPickup] = useState()
   const [delta, setDelta]=useState({
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421
@@ -103,7 +104,7 @@ export default function OrderDelivery({route}) {
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
         // updateOrderStatus(order.id, APP_CONSTANT.STARTED)
-        updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes)
+        // updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes)
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
             bottomSheet?.current.collapse()
@@ -123,6 +124,12 @@ export default function OrderDelivery({route}) {
           updateOrder(order.id, APP_CONSTANT.COMPLETED)
         }
       }
+      useEffect(() => {
+        if(orderStatus === APP_CONSTANT.ACCEPTED){
+          updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes) 
+        }
+      }, [totalMinutes]);
+
     useEffect(() => {
       getOrderStatus()
     }, []);
@@ -172,6 +179,8 @@ export default function OrderDelivery({route}) {
                  
                   setTotalMinutes(result.duration)
                   setTotalKm(result.distance)
+
+                  updateOrderAccepted(order.id, APP_CONSTANT.STARTED, result.duration)
                 }}
               />
     
