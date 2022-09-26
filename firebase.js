@@ -94,7 +94,7 @@ export const updateOrder = (order, status, location, userData) => {
       ...userData,
       location, 
     },
-    totalMinutes,
+    // totalMinutes,
     status: status,
     // remainingTime: totalMinutes 
 
