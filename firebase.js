@@ -106,6 +106,14 @@ export const updateOrder = (order, status, location, userData, totalMinutes) => 
   })
 }
 
+export const updateOrderAccepted = (orderId, status, remainingTimeForPickup) => {
+  updateDoc(doc(db, 'orders', orderId), {
+    status,
+    remainingTimeForPickup,
+    remainingTime: remainingTimeForPickup,
+  })
+}
+
 export const updateOrderStatus = (orderId, status) => {
   updateDoc(doc(db, 'orders', orderId), {
     status

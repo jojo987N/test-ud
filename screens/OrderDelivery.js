@@ -102,7 +102,8 @@ export default function OrderDelivery({route}) {
            .then(()=> setWaypoints([]))
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
-        updateOrderStatus(order.id, APP_CONSTANT.STARTED)
+        // updateOrderStatus(order.id, APP_CONSTANT.STARTED)
+        updateOrderAccepted(order.id, APP_CONSTANT.STARTED, remainingTimeForPickup)
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
             bottomSheet?.current.collapse()
