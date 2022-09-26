@@ -86,7 +86,7 @@ const addOrder = async () => {
   })
   console.log(docRef.id)
 }
-export const updateOrder = (order, status, location, userData, totalMinutes) => {
+export const updateOrder = (order, status, location, userData) => {
   const docRef = doc(db, 'orders', order.id)
 
   const obj = {
@@ -96,7 +96,7 @@ export const updateOrder = (order, status, location, userData, totalMinutes) => 
     },
     totalMinutes,
     status: status,
-    remainingTime: totalMinutes 
+    // remainingTime: totalMinutes 
 
   }
   return updateDoc(docRef, {
@@ -106,11 +106,11 @@ export const updateOrder = (order, status, location, userData, totalMinutes) => 
   })
 }
 
-export const updateOrderAccepted = (orderId, status, remainingTimeForPickup) => {
+export const updateOrderAccepted = (orderId, status, remainingTimeForPickup, totalMinutes) => {
   updateDoc(doc(db, 'orders', orderId), {
     status,
-    remainingTimeForPickup,
-    remainingTime: remainingTimeForPickup,
+    remainingTimeForPickup: totalMinutes,
+    remainingTime: totalMinutes,
   })
 }
 

@@ -103,7 +103,7 @@ export default function OrderDelivery({route}) {
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
         // updateOrderStatus(order.id, APP_CONSTANT.STARTED)
-        updateOrderAccepted(order.id, APP_CONSTANT.STARTED, remainingTimeForPickup)
+        updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes)
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
             bottomSheet?.current.collapse()
@@ -146,7 +146,7 @@ export default function OrderDelivery({route}) {
           }}
           showsUserLocation={true}
           followsUserLocation>
-            
+
              <MapViewDirections 
               
               origin={{

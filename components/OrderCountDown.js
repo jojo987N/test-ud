@@ -55,7 +55,8 @@ export default function OrderCountDown({ setOpacity, setShowOrderCountDown,
           <TouchableOpacity onPress={() => {
 
             // updateOrder(order.id, APP_CONSTANT.ACCEPTED, auth.currentUser?.uid)
-            updateOrder(order, APP_CONSTANT.ACCEPTED, location, userData, totalMinutes)
+            // updateOrder(order, APP_CONSTANT.ACCEPTED, location, userData, totalMinutes)
+            updateOrder(order, APP_CONSTANT.ACCEPTED, location, userData)
             // .then(()=>{
             navigation.navigate('OrderDelivery', {
               order: order,
