@@ -13,7 +13,7 @@ import { auth } from '../firebase'
 import UserInfos from '../components/UserInfos';
 import RestaurantInfos from '../components/RestaurantInfos';
 import InfosContainer from '../components/InfosContainer';
-import { APP_CONSTANT, grey1 } from '../global';
+import { apiKey, APP_CONSTANT, grey1 } from '../global';
 import { onSnapshot, query, where } from 'firebase/firestore';
 import UserProducts from '../components/UserProducts';
 
@@ -146,6 +146,35 @@ export default function OrderDelivery({route}) {
           }}
           showsUserLocation={true}
           followsUserLocation>
+            
+             <MapViewDirections 
+              
+              origin={{
+                latitude: location.latitude,
+                longitude: location.longitude,}}
+    
+                destination={{
+                 // latitude: order.User.lat,
+                 // longitude:  order.User.lng,
+                  ...destination
+                }}
+                strokeWidth={10}
+                strokeColor={renderButtonColor()}
+                waypoints={waypoints}
+                apikey={apiKey}
+                onReady ={(result)=> {
+    
+                  if(result.distance < 0.1){
+                    setIsDriverClose(true)
+                    setColorButton("green")
+                  }
+                  
+                 
+                  setTotalMinutes(result.duration)
+                  setTotalKm(result.distance)
+                }}
+              />
+    
             <CustomMarker subject={order.Restaurant} renderButtonColor={renderButtonColor}/>
             <CustomMarker subject={order.User} renderButtonColor={renderButtonColor}/>
         </MapView>
