@@ -28,6 +28,7 @@ export default function OrderDelivery({route}) {
   const [isDriverClose, setIsDriverClose] = useState(false)
   const [isDriverFinish, setIsDriverFinish] = useState(false)
   const [remainingTimeForPickup, setRemainingTimeForPickup] = useState()
+  const [firstRendrer, setFirstRender] = useState(false)
   const [delta, setDelta]=useState({
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421
@@ -103,6 +104,7 @@ export default function OrderDelivery({route}) {
            .then(()=> setWaypoints([]))
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
+           setFirstRender(true)
         // updateOrderStatus(order.id, APP_CONSTANT.STARTED)
         // updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes)
         }
@@ -125,10 +127,10 @@ export default function OrderDelivery({route}) {
         }
       }
       useEffect(() => {
-        if(orderStatus === APP_CONSTANT.STARTED){
+        if(orderStatus === APP_CONSTANT.STARTED && firstRendrer){
           updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes) 
         }
-      }, [totalMinutes]);
+      }, [totalMinutes, firstRendrer]);
 
     useEffect(() => {
       getOrderStatus()
