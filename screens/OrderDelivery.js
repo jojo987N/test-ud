@@ -105,7 +105,7 @@ export default function OrderDelivery({route}) {
            .then(()=> setTextButton(APP_CONSTANT.PICK_UP))
            .then (()=> setColorButton("orange"))
            setFirstRender(true)
-        // updateOrderStatus(order.id, APP_CONSTANT.STARTED)
+           updateOrderStatus(order.id, APP_CONSTANT.STARTED)
         // updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes)
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
@@ -127,10 +127,10 @@ export default function OrderDelivery({route}) {
         }
       }
       useEffect(() => {
-        if(orderStatus === APP_CONSTANT.ACCEPTED){
+        if(orderStatus === APP_CONSTANT.STARTED){
           updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes) 
         }
-      }, []);
+      }, [totalMinutes]);
 
     useEffect(() => {
       getOrderStatus()
