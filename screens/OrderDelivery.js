@@ -182,7 +182,7 @@ export default function OrderDelivery({route}) {
                   setTotalMinutes(result.duration)
                   setTotalKm(result.distance)
 
-                  updateOrderAccepted(order.id, APP_CONSTANT.STARTED, result.duration)
+                  // updateOrderAccepted(order.id, APP_CONSTANT.STARTED, result.duration)
                 }}
               />
     
