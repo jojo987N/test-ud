@@ -109,7 +109,7 @@ export const updateOrder = (order, status, location, userData) => {
 export const updateOrderAccepted = (orderId, status, totalMinutes) => {
   updateDoc(doc(db, 'orders', orderId), {
     status,
-    remainingTimeForPickup: Math.round(totalMinutes),
+    remainingTimeForPickup: Math.ceil(totalMinutes),
     remainingTime: totalMinutes*60,
   })
 }
