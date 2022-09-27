@@ -130,7 +130,7 @@ export default function OrderDelivery({route}) {
         if(orderStatus === APP_CONSTANT.ACCEPTED){
           updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes) 
         }
-      }, [totalMinutes]);
+      }, []);
 
     useEffect(() => {
       getOrderStatus()
