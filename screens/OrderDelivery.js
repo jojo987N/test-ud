@@ -8,7 +8,7 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import MapViewDirections from 'react-native-maps-directions';
 import { useNavigation } from '@react-navigation/native';
-import { ordersCol, updateOrder, updateOrderAccepted, updateOrderStatus } from '../firebase';
+import { ordersCol, updateOrder, updateOrderAccepted, updateOrderStarted, updateOrderStatus } from '../firebase';
 import { auth } from '../firebase'
 import UserInfos from '../components/UserInfos';
 import RestaurantInfos from '../components/RestaurantInfos';
@@ -128,7 +128,7 @@ export default function OrderDelivery({route}) {
       }
       useEffect(() => {
         if(orderStatus === APP_CONSTANT.STARTED){
-          updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes) 
+          updateOrderStarted(order.id, totalMinutes) 
         }
       }, [totalMinutes]);
 
