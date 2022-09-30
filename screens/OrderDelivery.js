@@ -106,7 +106,7 @@ export default function OrderDelivery({route}) {
            .then (()=> setColorButton("orange"))
            setFirstRender(true)
            updateOrderStatus(order.id, APP_CONSTANT.STARTED)
-        // updateOrderAccepted(order.id, APP_CONSTANT.STARTED, totalMinutes)
+        
         }
         if(orderStatus === APP_CONSTANT.START_DELIVERY){
             bottomSheet?.current.collapse()
@@ -163,8 +163,8 @@ export default function OrderDelivery({route}) {
                 longitude: location.longitude,}}
     
                 destination={{
-                 // latitude: order.User.lat,
-                 // longitude:  order.User.lng,
+                 
+                 
                   ...destination
                 }}
                 strokeWidth={10}
@@ -182,7 +182,7 @@ export default function OrderDelivery({route}) {
                   setTotalMinutes(result.duration)
                   setTotalKm(result.distance)
 
-                  // updateOrderAccepted(order.id, APP_CONSTANT.STARTED, result.duration)
+                  
                 }}
               />
     

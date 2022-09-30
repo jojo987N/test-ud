@@ -94,15 +94,15 @@ export const updateOrder = (order, status, location, userData) => {
       ...userData,
       location, 
     },
-    // totalMinutes,
+    
     status: status,
-    // remainingTime: totalMinutes 
+    
 
   }
   return updateDoc(docRef, {
     ...obj
-    // status: status,
-    // driverId: auth.currentUser?.uid,
+    
+    
   })
 }
 

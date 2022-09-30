@@ -20,17 +20,3 @@ export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 
 
 
-// export const getLocation = async (setLocation, route, bottomSheet) => {
-//     let { status } = await Location.requestForegroundPermissionsAsync();
-//     if (status !== 'granted') {
-//       setErrorMsg('Permission to access location was denied');
-//       return;
-//     }
-//     let location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
-//     setLocation({
-//       latitude: location.coords.latitude,
-//       longitude: location.coords.longitude
-//     });
-//     if(route.params.myLocation)
-//     bottomSheet?.current.collapse()
-//   }
